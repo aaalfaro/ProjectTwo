@@ -86,5 +86,23 @@ public class ManageBatchPage extends POM{
 	public WebElement getImportBatchClose() {
 		return driver.findElement(By.xpath("//*[@id=\"importBatchModal\"]/div/div/div[1]/button/span"));
 	}
+	
+	public WebElement getUpdateBatchCloseButton() {
+		return driver.findElement(By.xpath("//*[@id=\"createBatchModal\"]/div/div/div[3]/button"));	}
+
+	public WebElement getUpdateTraineeCloseButton() {
+		return driver.findElement(By.xpath("//*[@id=\"addTraineeModal\"]/div/div/div[1]/button/span"));
+	}
+
+	public WebElement getDeleteBatchCloseButton() {
+		return driver.findElement(By.xpath("//*[@id=\"deleteBatchModal\"]/div/div/div[3]/button"));
+	}
+
+	public WebElement getCreateBatchCloseButton() {
+		return driver.findElement(By.xpath("//*[@id=\"createBatchModal\"]/div/div/div[3]/button"));
+	}
+	public WebElement getImportBatchCloseButton() {
+		return driver.findElement(By.xpath("//*[@id=\"importBatchModal\"]/div/div/div[3]/button"));
+	}
 
 }

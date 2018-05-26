@@ -331,13 +331,41 @@ public class CaliberStepImpl {
 			wait.until(ExpectedConditions.elementToBeClickable(assess.getCreateWeekClose()));
 			assess.getCreateWeekClose().click();
 			break;
+		case"importBatch":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getImportBatchClose()));
+			manage.getImportBatchClose().click();
+			break;
 		case "techSkills":
 			wait.until(ExpectedConditions.elementToBeClickable(report.getTechSkillsClose()));
 			report.getTechSkillsClose().click();
 			break;
-		case"importBatch":
-			wait.until(ExpectedConditions.elementToBeClickable(manage.getImportBatchClose()));
-			manage.getImportBatchClose().click();
+		case "updateBatchButton":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getUpdateBatchClose()));
+			manage.getUpdateBatchCloseButton().click();
+			break;
+		case "updateTraineeButton":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getUpdateTraineeCloseButton()));
+			manage.getUpdateTraineeCloseButton().click();
+			break;
+		case "deleteBatchButton":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getDeleteBatchCloseButton()));
+			manage.getDeleteBatchCloseButton().click();
+			break;
+		case "createBatchButton":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getCreateBatchCloseButton()));
+			manage.getCreateBatchCloseButton().click();
+			break;
+		case "createAssessButton":
+			wait.until(ExpectedConditions.elementToBeClickable(assess.getCreateAssessCloseButton()));
+			assess.getCreateAssessCloseButton().click();
+			break;
+		case "createWeekButton":
+			wait.until(ExpectedConditions.elementToBeClickable(assess.getCreateWeekCloseButton()));
+			assess.getCreateWeekCloseButton().click();
+			break;
+		case"importBatchButton":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getImportBatchCloseButton()));
+			manage.getImportBatchCloseButton().click();
 			break;
 		default:
 			throw new IllegalArgumentException();

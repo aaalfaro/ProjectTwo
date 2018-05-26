@@ -56,4 +56,10 @@ public class AssessBatchPage extends POM{
 	public WebElement getCreateWeekClose() {
 		return driver.findElement(By.xpath("//*[@id=\"confirmingweeks\"]/div/div/div[1]/button"));
 	}
+	public WebElement getCreateAssessCloseButton() {
+		return driver.findElement(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/form/div[2]/button"));
+	}
+	public WebElement getCreateWeekCloseButton() {
+		return driver.findElement(By.xpath("//*[@id=\"confirmingweeks\"]/div/div/div[2]/button[2]"));
+	}
 }
