@@ -20,7 +20,7 @@ public class AssessBatchPage extends POM{
 		return driver.findElement(By.cssSelector("body > div > ui-view > ui-view > div:nth-child(1) > div > div.col-md-12.col-lg-12.top10 > ul:nth-child(1) > li.pull-right > a"));
 	}
 	public WebElement getCreateWeekButton() {
-		return driver.findElement(By.cssSelector("body > div > ui-view > ui-view > div:nth-child(1) > div > div.col-sm-12.col-md-12.col-lg-12.top5 > ul > li:nth-child(9) > a"));
+		return driver.findElement(By.xpath("/html/body/div/ui-view/ui-view/div[1]/div/div[3]/ul/li[9]/a/span"));
 	}
 	public String getCreateWeekId() {
 		return driver.findElement(By.xpath("//*[@id=\"myModalLabel\"]")).getTagName();
@@ -40,5 +40,20 @@ public class AssessBatchPage extends POM{
 			wordList.add(web.getText());
 		}
 		return wordList;
+	}
+	public WebElement getSaveButton() {
+		return driver.findElement(By.xpath("//*[@id=\"trainer-assess-table\"]/div/div/ul/ul/div[3]/div/a"));
+	}
+	public boolean getSaveId() {
+		return driver.findElement(By.xpath("//*[@id=\"checkMark\"]")).isDisplayed();
+	}
+	public WebElement getSaveCheckMark() {
+		return driver.findElement(By.xpath("//*[@id=\"checkMark\"]"));
+	}
+	public WebElement getCreateAssessClose() {
+		return driver.findElement(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/div/button/span"));
+	}
+	public WebElement getCreateWeekClose() {
+		return driver.findElement(By.xpath("//*[@id=\"confirmingweeks\"]/div/div/div[1]/button"));
 	}
 }

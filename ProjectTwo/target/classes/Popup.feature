@@ -1,7 +1,7 @@
 Feature: Testing the buttons that bring up menus
 
   Background: 
-     Given a user opens a webbrowser
+    Given a user opens a webbrowser
     And navigates to caliber
 
   Scenario Outline: 
@@ -9,11 +9,17 @@ Feature: Testing the buttons that bring up menus
     Then the "<popUp>" should occur
 
     Examples: 
-      | button       | popUp        |
-      | viewTrainees | viewTrainees |
-      | updateBatch  | updateBatch  |
-      | deleteBatch  | deleteBatch  |
-      | addTrainee   | addTrainee   |
-      | createAssess | createAssess |
-      | createWeek   | createWeek   |
-      | updateAssess | updateAssess |
+      | button        | popUp         |
+      | viewTrainees  | viewTrainees  |
+      | updateBatch   | updateBatch   |
+      | deleteBatch   | deleteBatch   |
+      | addTrainee    | addTrainee    |
+      | updateTrainee | updateTrainee |
+      | importBatch   | importBatch   |
+      | createAssess  | createAssess  |
+      | createWeek    | createWeek    |
+      | updateTrainee | updateTrainee |
+      | updateAssess  | updateAssess  |
+      | save          | save          |
+
+

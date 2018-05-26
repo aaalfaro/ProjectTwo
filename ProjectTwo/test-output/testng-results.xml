@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="177339" started-at="2018-05-26T14:18:15Z" finished-at="2018-05-26T14:21:12Z">
+  <suite name="Default suite" duration-ms="320824" started-at="2018-05-26T21:42:27Z" finished-at="2018-05-26T21:47:47Z">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.runners.TestNGRunner@146ba0ac]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Default test" duration-ms="177339" started-at="2018-05-26T14:18:15Z" finished-at="2018-05-26T14:21:12Z">
+    <test name="Default test" duration-ms="320824" started-at="2018-05-26T21:42:27Z" finished-at="2018-05-26T21:47:47Z">
       <class name="com.revature.runners.TestNGRunner">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.revature.runners.TestNGRunner@146ba0ac]" name="setUpClass" is-config="true" duration-ms="210" started-at="2018-05-26T10:18:15Z" finished-at="2018-05-26T10:18:15Z">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.revature.runners.TestNGRunner@146ba0ac]" name="setUpClass" is-config="true" duration-ms="219" started-at="2018-05-26T17:42:27Z" finished-at="2018-05-26T17:42:27Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.runners.TestNGRunner@146ba0ac]" name="feature" duration-ms="122846" started-at="2018-05-26T10:18:15Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-05-26T10:20:18Z">
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.runners.TestNGRunner@146ba0ac]" name="feature" duration-ms="123102" started-at="2018-05-26T17:42:27Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-05-26T17:44:30Z">
           <params>
             <param index="0">
               <value>
@@ -25,7 +25,18 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- feature -->
-        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.runners.TestNGRunner@146ba0ac]" name="feature" duration-ms="54201" started-at="2018-05-26T10:20:18Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-05-26T10:21:12Z">
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.runners.TestNGRunner@146ba0ac]" name="feature" duration-ms="87996" started-at="2018-05-26T17:44:30Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-05-26T17:45:58Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Testing the buttons that close menus]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- feature -->
+        <test-method status="PASS" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.runners.TestNGRunner@146ba0ac]" name="feature" duration-ms="109438" started-at="2018-05-26T17:45:58Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-05-26T17:47:47Z">
           <params>
             <param index="0">
               <value>
@@ -36,7 +47,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- feature -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.revature.runners.TestNGRunner@146ba0ac]" name="tearDownClass" is-config="true" duration-ms="2" started-at="2018-05-26T10:21:12Z" finished-at="2018-05-26T10:21:12Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.revature.runners.TestNGRunner@146ba0ac]" name="tearDownClass" is-config="true" duration-ms="6" started-at="2018-05-26T17:47:47Z" finished-at="2018-05-26T17:47:47Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

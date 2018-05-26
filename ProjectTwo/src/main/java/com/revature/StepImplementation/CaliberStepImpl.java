@@ -1,10 +1,13 @@
 package com.revature.StepImplementation;
 
+import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.revature.Driver.DriverFactory;
@@ -34,7 +37,7 @@ public class CaliberStepImpl {
 		driver = DriverFactory.getDriver("chrome");
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-		wait = new WebDriverWait(driver, 5);
+		wait = new WebDriverWait(driver, 15);
 	}
 
 	@Given("^navigates to caliber$")
@@ -112,6 +115,8 @@ public class CaliberStepImpl {
 			home.getManageAnchor().click();
 			manage = new ManageBatchPage(driver);
 			manage.getViewBatchButton().click();
+			wait.until(ExpectedConditions.visibilityOf(manage.getAddTraineeButton()));
+			manage.getAddTraineeButton().click();
 			break;
 		case "createAssess":
 			home.getAssessAnchor().click();
@@ -121,6 +126,7 @@ public class CaliberStepImpl {
 		case "createWeek":
 			home.getAssessAnchor().click();
 			assess = new AssessBatchPage(driver);
+			wait.until(ExpectedConditions.elementToBeClickable(assess.getCreateWeekButton()));
 			assess.getCreateWeekButton().click();
 			break;
 		case "updateAssess":
@@ -128,9 +134,27 @@ public class CaliberStepImpl {
 			assess = new AssessBatchPage(driver);
 			assess.getUpdateAssessButton().click();
 			break;
+		case "updateTrainee":
+			home.getManageAnchor().click();
+			manage = new ManageBatchPage(driver);
+			manage.getViewBatchButton().click();
+			wait.until(ExpectedConditions.visibilityOf(manage.getUpdateTraineeButton()));
+			manage.getUpdateTraineeButton().click();
+			break;
 		case "createBatch":
+			home.getManageAnchor().click();
 			manage = new ManageBatchPage(driver);
 			manage.getCreateBatchButton().click();
+			break;
+		case "techSkills":
+			home.getReportAnchor().click();
+			report = new ReportPage(driver);
+			report.getTechSkillsButton().click();
+			break;
+		case "save":
+			home.getAssessAnchor().click();
+			assess = new AssessBatchPage(driver);
+			assess.getSaveButton().click();
 			break;
 		default:
 			throw new IllegalArgumentException();
@@ -203,6 +227,117 @@ public class CaliberStepImpl {
 			break;
 		case "updateAssess":
 			assertEquals(assess.getUpdateAssessId(), "label");
+			break;
+		case "updateTrainee":
+			assertEquals(manage.getUpdateTraineeId(), "h3");
+			break;
+		case "techSkills":
+			assertEquals(report.getTechSkillsId(), "h4");
+			break;
+		case "save":
+			wait.until(ExpectedConditions.visibilityOf(assess.getSaveCheckMark()));
+			assertTrue(assess.getSaveId());
+			break;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@Then("^the \"([^\"]*)\" should be closed$")
+	public void the_should_be_closed(String arg1) throws Throwable {
+		try {
+			switch (arg1) {
+			case "viewTrainee":
+				manage.getViewBatchId();
+				assertTrue(false);
+				break;
+			case "active":
+				assertEquals(manage.getActiveId(), "h4");
+				break;
+			case "updateBatch":
+				manage.getUpdateBatchId();
+				assertTrue(false);
+				break;
+			case "updateTrainee":
+				manage.getUpdateTraineeId();
+				assertTrue(false);
+				break;
+			case "deleteBatch":
+				manage.getDeleteBatchId();
+				assertTrue(false);
+				break;
+			case "createBatch":
+				manage.getCreateBatchId();
+				assertTrue(false);
+				break;
+			case "createAssess":
+				assess.getCreateAssessId();
+				assertTrue(false);
+				break;
+			case "createWeek":
+				assess.getCreateWeekId();
+				assertTrue(false);
+				break;
+			case "techSkills":
+				report.getTechSkillsId();
+				assertTrue(false);
+				break;
+			case "importBatch":
+				manage.getImportBatchId();
+				assertTrue(false);
+				break;
+			default:
+				assertTrue(false);
+			}
+		} catch (Exception e) {
+			assertTrue(true);
+			return;
+		}
+
+	}
+
+	@When("^user closes \"([^\"]*)\"$")
+	public void user_closes(String arg1) throws Throwable {
+		switch (arg1) {
+		case "active":
+			wait.until(ExpectedConditions.visibilityOf(manage.getActiveSwitch()));
+			manage.getActiveSwitch().click();
+			break;
+		case "viewTrainees":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getViewTraineeClose()));
+			manage.getViewTraineeClose().click();
+			break;
+		case "updateBatch":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getUpdateBatchClose()));
+			manage.getUpdateBatchClose().click();
+			break;
+		case "updateTrainee":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getUpdateTraineeClose()));
+			manage.getUpdateTraineeClose().click();
+			break;
+		case "deleteBatch":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getDeleteBatchClose()));
+			manage.getDeleteBatchClose().click();
+			break;
+		case "createBatch":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getCreateBatchClose()));
+			manage.getCreateBatchClose().click();
+			break;
+		case "createAssess":
+			wait.until(ExpectedConditions.elementToBeClickable(assess.getCreateAssessClose()));
+			assess.getCreateAssessClose().click();
+			break;
+		case "createWeek":
+			wait.until(ExpectedConditions.elementToBeClickable(assess.getCreateWeekClose()));
+			assess.getCreateWeekClose().click();
+			break;
+		case "techSkills":
+			wait.until(ExpectedConditions.elementToBeClickable(report.getTechSkillsClose()));
+			report.getTechSkillsClose().click();
+			break;
+		case"importBatch":
+			wait.until(ExpectedConditions.elementToBeClickable(manage.getImportBatchClose()));
+			manage.getImportBatchClose().click();
 			break;
 		default:
 			throw new IllegalArgumentException();
