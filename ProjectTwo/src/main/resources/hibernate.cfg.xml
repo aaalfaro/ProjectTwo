@@ -24,5 +24,6 @@
 		<mapping class="com.revature.model.Trainer"></mapping>
 		<mapping class="com.revature.model.TrainingType"></mapping>
 		<mapping class="com.revature.model.Status"></mapping>
+		<mapping class="com.revature.model.Assessment"></mapping>
 	</session-factory>
 </hibernate-configuration>
