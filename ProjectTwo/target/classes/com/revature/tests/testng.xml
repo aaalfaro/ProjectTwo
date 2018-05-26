@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Calilber" parallel="false">
+  <parameter name="username" value="mercury"></parameter>
+  <parameter name="password" value="mercury"></parameter>
+  <test name="Test">
+    <classes>
+      <class name="com.revature.tests.Caliber"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
