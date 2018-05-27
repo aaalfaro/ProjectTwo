@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 public class AssessBatchPage extends POM{
 
@@ -62,4 +63,13 @@ public class AssessBatchPage extends POM{
 	public WebElement getCreateWeekCloseButton() {
 		return driver.findElement(By.xpath("//*[@id=\"confirmingweeks\"]/div/div/div[2]/button[2]"));
 	}
+	public WebElement getSubAssessButton() {
+		return driver.findElement(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/form/div[2]/input"));
+	}
+
+	public WebElement getPointInput() {
+		return driver.findElement(By.xpath("//*[@id=\"rawScore\"]"));
+	}
+
+	
 }

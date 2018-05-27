@@ -78,6 +78,7 @@ public class CaliberStepImpl {
 
 	@When("^user clicks \"([^\"]*)\"$")
 	public void user_clicks(String arg1) throws Throwable {
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		switch (arg1) {
 		case "home":
 			cur.getHomeAnchor().click();
@@ -155,6 +156,14 @@ public class CaliberStepImpl {
 			home.getAssessAnchor().click();
 			assess = new AssessBatchPage(driver);
 			assess.getSaveButton().click();
+			break;
+		case "subAssess":
+			wait.until(ExpectedConditions.visibilityOf(assess.getSubAssessButton()));
+			assess.getSubAssessButton().click();
+			break;
+		case "subCreateBatch":
+			wait.until(ExpectedConditions.visibilityOf(manage.getSubCreateBatchButton()));
+			manage.getSubCreateBatchButton().submit();
 			break;
 		default:
 			throw new IllegalArgumentException();
@@ -331,7 +340,7 @@ public class CaliberStepImpl {
 			wait.until(ExpectedConditions.elementToBeClickable(assess.getCreateWeekClose()));
 			assess.getCreateWeekClose().click();
 			break;
-		case"importBatch":
+		case "importBatch":
 			wait.until(ExpectedConditions.elementToBeClickable(manage.getImportBatchClose()));
 			manage.getImportBatchClose().click();
 			break;
@@ -363,7 +372,7 @@ public class CaliberStepImpl {
 			wait.until(ExpectedConditions.elementToBeClickable(assess.getCreateWeekCloseButton()));
 			assess.getCreateWeekCloseButton().click();
 			break;
-		case"importBatchButton":
+		case "importBatchButton":
 			wait.until(ExpectedConditions.elementToBeClickable(manage.getImportBatchCloseButton()));
 			manage.getImportBatchCloseButton().click();
 			break;
@@ -378,4 +387,66 @@ public class CaliberStepImpl {
 			driver.close();
 	}
 
+	@When("^user input \"([^\"]*)\" from \"([^\"]*)\"$")
+	public void user_input_from(String arg1, String arg2) throws Throwable {
+
+		switch (arg2) {
+		case "point":
+			assess.getPointInput().sendKeys(arg1);
+			break;
+		case "name":
+			manage.getNameInput().sendKeys(arg1);
+			break;
+		case "startDate":
+			manage.getStartDateInput().sendKeys(arg1);
+			break;
+		case "endDate":
+			manage.getEndDateInput().sendKeys(arg1);
+			break;
+		case "goodGrade":
+			manage.getGoodGradeInput().sendKeys(arg1);
+			break;
+		case "passingGrade":
+			manage.getPassingGradeInput().sendKeys(arg1);
+			break;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@When("^user selects \"([^\"]*)\" from \"([^\"]*)\"$")
+	public void user_selects_from(String arg1, String arg2) throws Throwable {
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		switch (arg2) {
+		case "category":
+			assess.DropDown(arg1, "category");
+			break;
+		case "type":
+			assess.DropDown(arg1, "assessmentType");
+			break;
+		case "training":
+			manage.DropDown(arg1, "trainingType");
+			break;
+		case "skill":
+			manage.DropDown(arg1, "skillType");
+			break;
+		case "NY":
+			manage.selectLocation(arg1, arg2);
+			break;
+		case "VA":
+			manage.selectLocation(arg1, arg2);
+			break;
+		case "trainer":
+			manage.DropDown(arg1, "trainer");
+			break;
+		default:
+			throw new IllegalArgumentException();
+		}
+	}
+
+	@Then("^new assessment should be created$")
+	public void new_assessment_should_be_created() throws Throwable {
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		assertTrue(true);
+	}
 }

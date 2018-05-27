@@ -1,9 +1,12 @@
 package com.revature.pom;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ManageBatchPage extends POM{
@@ -105,4 +108,50 @@ public class ManageBatchPage extends POM{
 		return driver.findElement(By.xpath("//*[@id=\"importBatchModal\"]/div/div/div[3]/button"));
 	}
 
-}
+	public WebElement getSubCreateBatchButton() {
+		return driver.findElement(By.cssSelector("#createBatchModal > div > div > div.modal-footer > input"));
+	}
+
+	public WebElement getNameInput() {
+		return driver.findElement(By.xpath("//*[@id=\"trainingName\"]"));
+	}
+
+	public WebElement getStartDateInput() {
+		return driver.findElement(By.xpath("//*[@id=\"start-date\"]/input"));
+	}
+
+	public WebElement getEndDateInput() {
+		return driver.findElement(By.xpath("//*[@id=\"end-date\"]/input"));
+	}
+
+	public WebElement getGoodGradeInput() {	
+		return driver.findElement(By.xpath("//*[@id=\"goodGrade\"]"));
+	}
+
+	public WebElement getPassingGradeInput() {
+		return driver.findElement(By.xpath("//*[@id=\"borderlineGrade\"]"));
+	}
+	public void selectLocation(String input, String locator) {
+		String path;
+		switch(locator) {
+		case"NY": path = "//*[@id=\"location\"]/optgroup[1]/option";break;
+		case"VA": path = "//*[@id=\"location\"]/optgroup[2]/option";break;
+		default:throw new IllegalArgumentException();
+		}
+		List<WebElement> listOfElements = driver.findElements(By.xpath(path));
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("#location"))));
+		Select select = new Select(driver.findElement(By.cssSelector("#location")));
+		for(WebElement el : listOfElements) {
+			if(el.getText().equals(input)) {
+			wait.until(ExpectedConditions.visibilityOf(el));
+				select.selectByIndex(2);
+				return;
+			}
+			
+		}
+		throw new IllegalArgumentException("Not a valid month");
+		}
+	
+	}
+
+
