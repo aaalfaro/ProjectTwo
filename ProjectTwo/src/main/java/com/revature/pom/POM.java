@@ -47,7 +47,7 @@ public abstract class POM {
 		}
 		throw new IllegalArgumentException("Not a valid month");
 		}
-	public void input(String input,String locator) {
+	public void input(String input,String locator) {		
 		driver.findElement(By.xpath("//*[@id=\""+ locator +"\"]")).sendKeys(input);
 	}
 }

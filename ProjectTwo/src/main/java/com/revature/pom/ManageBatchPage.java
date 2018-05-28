@@ -181,6 +181,10 @@ public class ManageBatchPage extends POM{
 		return null;
 	}
 
+	public WebElement getDeleteBatchButton(String locator) {
+		return driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+locator+"]/td[13]/a"));
+	}
+
 	
 	}
 

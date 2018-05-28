@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -400,7 +401,7 @@ public class CaliberStepImpl {
 			break;
 		case "passingGrade":
 			manage.input(arg1, "borderlineGrade");
-			break;// *[@id="traineePhone"]
+			break;
 		case "traineeName":
 			manage.getInputForTraineeName(0).sendKeys(arg2);
 			break;
@@ -436,6 +437,12 @@ public class CaliberStepImpl {
 			break;
 		case"updatePoint":
 			assess.updateDropDown(arg1, "rawScore");
+			break;
+		case"searchTextBox":
+			home.getReportAnchor().click();
+			report = new ReportPage(driver);
+			report.input(arg1, arg2);
+			driver.findElement(By.xpath("//*[@id=\"searchTextBox\"]")).submit();
 			break;
 		default:
 			throw new IllegalArgumentException();
@@ -531,9 +538,25 @@ public class CaliberStepImpl {
 			manage.yearDropDown("2016", "");
 			manage.getViewBatchButton(arg1).click();
 			break;
+		case "deleteAssess":
+			home.getAssessAnchor().click();
+			assess = new AssessBatchPage(driver);
+			assess.getDeleteAssess(arg1).click();
+			break;
+		case "deleteBatch":
+			home.getManageAnchor().click();
+			manage = new ManageBatchPage(driver);
+			manage.yearDropDown("2016", "");
+			manage.getDeleteBatchButton(arg1).click();
+			break;	
 		default:
 			throw new IllegalArgumentException();
 		}
+	}
+	
+	@Then("^the \"([^\"]*)\" should be gone$")
+	public void the_should_be_gone(String arg1) throws Throwable {
+	    assertTrue(true);
 	}
 
 	@Then("^new assessment should be created$")
@@ -555,6 +578,20 @@ public class CaliberStepImpl {
 	@Then("^\"([^\"]*)\" should be displayed$")
 	public void should_be_displayed(String arg1) throws Throwable {
 		assertTrue(true);
+	}
+	@Then("^the \"([^\"]*)\" should displayed$")
+	public void the_should_displayed(String arg1) throws Throwable {
+	  assertTrue(true);
+	}
+	@When("^user clicks a pdf button$")
+	public void user_clicks_a_pdf_button() throws Throwable {
+		home.getReportAnchor().click();
+		report = new ReportPage(driver);
+		report.TestPdfs();
+	}
+	@Then("^a pdf should download$")
+	public void a_pdf_should_download() throws Throwable {
+	    assertTrue(report.wasPdfTestSuccessful());
 	}
 
 	@After

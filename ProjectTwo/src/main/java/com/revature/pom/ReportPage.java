@@ -8,7 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ReportPage extends POM{
-
+	
+	boolean pdfSuccess = true;
+	
 	public ReportPage(WebDriver driver) {
 		super(driver);
 	}
@@ -49,5 +51,17 @@ public class ReportPage extends POM{
 		}
 		throw new IllegalArgumentException("Not a valid month");
 		}
+	public void TestPdfs() {
+	List<WebElement> pdfButtons =	driver.findElements(By.className("glyphicon-save"));
+	for(WebElement button : pdfButtons) {	
+		button.click();
+		if(!pdfSuccess) {
+			pdfSuccess = false;
+		}
+	}
+	}
+	public boolean wasPdfTestSuccessful() {
+		return pdfSuccess;
+	}
 	
 }

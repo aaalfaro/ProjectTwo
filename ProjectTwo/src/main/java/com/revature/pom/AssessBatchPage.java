@@ -121,4 +121,7 @@ public class AssessBatchPage extends POM{
 	public WebElement getSubmitUpdateButton() {
 		return driver.findElement(By.xpath("//*[@id=\"editAssessmentModal_155027\"]/div/div/div[3]/div[2]/input"));
 	}
+	public WebElement getDeleteAssess(String arg1) {
+		return null;
+	}
 }
