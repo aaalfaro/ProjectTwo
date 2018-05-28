@@ -142,6 +142,6 @@
 		</dependency>
   </dependencies>
   <build>
-    <finalName>Project2</finalName>
+    <finalName>ProjectTwo</finalName>
   </build>
 </project>
