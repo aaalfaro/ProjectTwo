@@ -27,6 +27,12 @@ public class Assessment {
 	
 	@Column(name="TYPE")
 	private String type;
+	
+	
+
+	public Assessment() {
+		super();
+	}
 
 	public Assessment(String category, String type) {
 		super();

@@ -10,8 +10,18 @@
   	<description></description>
   	<servlet-class>com.revature.servlet.Servlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>AjaxServlet</servlet-name>
+  	<display-name>AjaxServlet</display-name>
+  	<description>For retrieving POJO's</description>
+  	<servlet-class>com.revature.servlets.AjaxServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Servlet</servlet-name>
   	<url-pattern>/Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AjaxServlet</servlet-name>
+  	<url-pattern>*.ajax</url-pattern>
   </servlet-mapping>
 </web-app>

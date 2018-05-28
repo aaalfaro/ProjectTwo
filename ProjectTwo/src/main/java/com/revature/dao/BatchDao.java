@@ -6,6 +6,6 @@ import com.revature.model.Batch;
 import com.revature.model.Trainee;
 
 public interface BatchDao {
-	Batch getBatch(int id);
+	List<Batch> getBatch();
 	boolean addBatch(Batch batch);
 }

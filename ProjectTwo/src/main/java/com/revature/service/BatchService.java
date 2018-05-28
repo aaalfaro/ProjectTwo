@@ -1,5 +1,7 @@
 package com.revature.service;
 
+import java.util.List;
+
 import com.revature.dao.BatchDao;
 import com.revature.daoimpl.BatchDaoImpl;
 import com.revature.model.Batch;
@@ -9,8 +11,8 @@ public class BatchService {
 	
 	public BatchService() {}
 	
-	public static Batch Batch(int id) {
-		return dao.getBatch(id);
+	public static List<Batch> Batch() {
+		return dao.getBatch();
 	}
 	
 	public static boolean addBatch(Batch batch) {

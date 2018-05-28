@@ -23,6 +23,11 @@ public class Status {
 	
 	@Column(name="type")
 	private String status;
+	
+
+	public Status() {
+		super();
+	}
 
 	public Status(String status) {
 		super();

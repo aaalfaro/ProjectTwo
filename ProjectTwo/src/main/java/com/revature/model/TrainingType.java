@@ -25,6 +25,10 @@ public class TrainingType {
 	
 	@Column(name="TYPE_NAME")
 	private String type;
+	
+	public TrainingType() {
+		super();
+	}
 
 	public TrainingType(String type) {
 		super();

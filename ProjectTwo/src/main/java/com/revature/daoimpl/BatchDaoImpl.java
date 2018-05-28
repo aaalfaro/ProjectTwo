@@ -1,5 +1,7 @@
 package com.revature.daoimpl;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -20,11 +22,12 @@ public class BatchDaoImpl implements BatchDao{
 	}
 
 	@Override
-	public Batch getBatch(int id) {
+	public List<Batch> getBatch() {
 		Session session = null;
+		List<Batch> batch;
 		try {
-			session = HibernateUtility.getSessionFactory().getCurrentSession();
-			Batch batch = session.createQuery("from Batch b where b.id like :id",Batch.class).setParameter("id", id).getSingleResult();
+			session = HibernateUtility.getSessionFactory().openSession();
+			batch = session.createQuery("from com.revature.model.Batch",Batch.class).getResultList();
 			return batch;
 		}catch (HibernateException hbe) {
 			hbe.printStackTrace();

@@ -22,6 +22,4 @@ public class TraineeService {
 	public static List<Trainee> getAllTrainee(){
 		return dao.getAllTrainees();
 	}
-	
-	
 }

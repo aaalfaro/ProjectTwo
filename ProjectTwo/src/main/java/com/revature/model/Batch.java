@@ -47,6 +47,11 @@ public class Batch {
 	@Column(name="YEAR")
 	private int year;
 	
+	
+	public Batch() {
+		super();
+	}
+
 	public Batch(String name, String location, int goodGrade, int passingGrade, int month, int day, int year) {
 		super();
 		this.name = name;

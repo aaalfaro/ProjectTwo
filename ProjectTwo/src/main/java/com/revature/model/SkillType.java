@@ -24,6 +24,12 @@ public class SkillType {
 	
 	@Column(name=("SKILL_NAME"))
 	private String type;
+	
+	
+
+	public SkillType() {
+		super();
+	}
 
 	public SkillType(String type) {
 		super();

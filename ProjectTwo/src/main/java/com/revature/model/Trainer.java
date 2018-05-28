@@ -8,8 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name="TRAINER")
+@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
 public class Trainer {
 
 	@Id
