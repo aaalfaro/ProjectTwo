@@ -123,6 +123,21 @@ public class ManageBatchPage extends POM{
 	public WebElement getInputForTraineeName(int index) {
 		return driver.findElements(By.cssSelector("#traineeName")).get(index);
 	}
+	public void yearDropDown(String input,String locator) {					
+		WebElement list = driver.findElement(By.xpath("//*[@id=\"manage\"]/div[1]/div/div/ul/li[1]"));
+		list.click();
+		List<WebElement> listOfElements = list.findElements(By.tagName("a"));
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id=\"manage\"]/div[1]/div/div/ul/li[1]"))));
+		for(WebElement el : listOfElements) {
+			if(el.getText().equals(input)) {
+			wait.until(ExpectedConditions.visibilityOf(el));
+				el.click();
+				return;
+			}
+			
+		}
+		throw new IllegalArgumentException("Not a valid month");
+		}
 	public void selectLocation(String input, String locator) {
 		String path;
 		switch(locator) {

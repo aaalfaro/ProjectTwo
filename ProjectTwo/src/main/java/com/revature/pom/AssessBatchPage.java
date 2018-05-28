@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 public class AssessBatchPage extends POM{
@@ -70,6 +71,35 @@ public class AssessBatchPage extends POM{
 	public WebElement getSubCreateWeekButton() {
 		return driver.findElement(By.xpath("//*[@id=\"yesBtn\"]"));
 	}
-
+	public void weekTab(String input) {
+		WebElement list = driver.findElement(By.xpath("/html/body/div/ui-view/ui-view/div[1]/div/div[3]/ul"));									
+		List<WebElement> listOfElements = list.findElements(By.tagName("li"));
+		System.out.println(listOfElements.get(0).toString());
+		wait.until(ExpectedConditions.visibilityOf(list));
+		for(WebElement el : listOfElements) {
+			if(el.getText().equals(input)) {
+			wait.until(ExpectedConditions.visibilityOf(el));
+				el.click();
+				return;
+			}
+			
+		}
+		throw new IllegalArgumentException("Not a valid month");
+		}
 	
+	public void dropDownOptions(String input,String locator) {	
+		WebElement list = driver.findElement(By.xpath("/html/body/div/ui-view/ui-view/div[1]/div/div[2]/ul[1]/li["+locator+"]"));	
+		list.click();								
+		List<WebElement> listOfElements = list.findElements(By.tagName("a"));
+		wait.until(ExpectedConditions.visibilityOf(list));
+		for(WebElement el : listOfElements) {
+			if(el.getText().equals(input)) {
+			wait.until(ExpectedConditions.visibilityOf(el));
+				el.click();
+				return;
+			}
+			
+		}
+		throw new IllegalArgumentException("Not a valid month");
+		}
 }

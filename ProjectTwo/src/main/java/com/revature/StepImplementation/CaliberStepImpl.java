@@ -38,6 +38,7 @@ public class CaliberStepImpl {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		wait = new WebDriverWait(driver, 15);
+		cur = new HomePage(driver);
 	}
 
 	@Given("^navigates to caliber$")
@@ -385,12 +386,6 @@ public class CaliberStepImpl {
 		}
 	}
 
-	@After
-	public void shutDownDrivers() {
-		if (driver != null)
-			driver.close();
-	}
-
 	@When("^user input \"([^\"]*)\" from \"([^\"]*)\"$")
 	public void user_input_from(String arg1, String arg2) throws Throwable {
 
@@ -479,6 +474,41 @@ public class CaliberStepImpl {
 		case "status":
 			manage.DropDown(arg1, "traineeStatus");
 			break;
+		case "manageYear":
+			manage = new ManageBatchPage(driver);
+			manage.yearDropDown(arg1, arg2);
+			break;
+		case "assessYear":
+			assess = new AssessBatchPage(driver);
+			assess.dropDownOptions(arg1, "1");
+			break;
+		case "assessTrainer":
+			assess = new AssessBatchPage(driver);
+			assess.dropDownOptions(arg1, "2");
+			break;
+		case "reportYear":
+			report = new ReportPage(driver);
+			report.dropDownOptions(arg1, "1");
+			break;
+		case "reportTrainer":
+			report = new ReportPage(driver);
+			report.dropDownOptions(arg1, "2");
+			break;
+		case "reportWeek":
+			report = new ReportPage(driver);
+			report.dropDownOptions(arg1, "3");
+			break;
+		case "reportTrainee":
+			report = new ReportPage(driver);
+			report.dropDownOptions(arg1, "4");
+			break;
+		case "reportPdf":
+			report = new ReportPage(driver);
+			report.dropDownOptions(arg1, "pdf");
+			break;
+		case "weekTab":
+			assess= new AssessBatchPage(driver);
+			assess.weekTab(arg1);
 		default:
 			throw new IllegalArgumentException();
 		}
@@ -498,5 +528,16 @@ public class CaliberStepImpl {
 	@Then("^new trainee should be created$")
 	public void new_trainee_should_be_created() throws Throwable {
 		assertTrue(true);
+	}
+
+	@Then("^\"([^\"]*)\" should be displayed$")
+	public void should_be_displayed(String arg1) throws Throwable {
+		assertTrue(true);
+	}
+
+	@After
+	public void shutDownDrivers() {
+		if (driver != null)
+			driver.close();
 	}
 }
