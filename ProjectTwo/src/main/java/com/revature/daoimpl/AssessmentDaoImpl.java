@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 
 import com.revature.dao.AssessmentDao;
 import com.revature.model.Assessment;
+import com.revature.model.Batch;
 import com.revature.utility.HibernateUtility;
 
 public class AssessmentDaoImpl implements AssessmentDao{
@@ -80,5 +81,20 @@ public class AssessmentDaoImpl implements AssessmentDao{
 		}
 		return false;
 	}
-
+	@Override
+	public Assessment getAssessment(int id) {
+		Session session = null;
+		try {
+			session = HibernateUtility.getSessionFactory().openSession();
+			return session.createQuery("from Assessment a where a.id like :id",Assessment.class).setParameter("id", id).getSingleResult();
+		}catch (HibernateException hbe) {
+			hbe.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("Session successfully closed: " + !session.isOpen());
+			}
+		}
+		return null;
+	}
 }

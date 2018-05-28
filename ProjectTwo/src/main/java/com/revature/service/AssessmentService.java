@@ -22,5 +22,9 @@ public class AssessmentService {
 	public static boolean addAssessment(Assessment a) {
 		return dao.insertAssessment(a);
 	}
+	
+	public static Assessment getAssessment(int id) {
+		return dao.getAssessment(id);
+	}
 
 }

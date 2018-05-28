@@ -3,6 +3,7 @@ package com.revature.StepImplementation;
 import static org.junit.Assert.assertTrue;
 import static org.testng.Assert.assertEquals;
 
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -12,12 +13,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.revature.Driver.DriverFactory;
+import com.revature.model.Assessment;
 import com.revature.pom.AssessBatchPage;
 import com.revature.pom.HomePage;
 import com.revature.pom.ManageBatchPage;
 import com.revature.pom.POM;
 import com.revature.pom.ReportPage;
+import com.revature.service.AssessmentService;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -592,6 +596,37 @@ public class CaliberStepImpl {
 	@Then("^a pdf should download$")
 	public void a_pdf_should_download() throws Throwable {
 	    assertTrue(report.wasPdfTestSuccessful());
+	}
+	
+	@When("^a user inserts an assessment$")
+	public void a_user_inserts_an_assessment(DataTable arg1) throws Throwable {
+		Map<String, String> map = arg1.asMap(String.class, String.class);
+		Assessment assessment = AssessmentService.getAssessment(Integer.parseInt(map.get("pk")));
+	    home.getAssessAnchor().click();
+	    assess = new AssessBatchPage(driver);
+	    assess.getCreateAssessButton().click();
+	    assess.DropDown(assessment.getCategory(), "category");
+	    assess.DropDown(assessment.getType(), "assessmentType");
+	    assess.input("80", "rawScore");
+	    assess.getSubAssessButton().click();
+	}
+	@When("^a user inserts an assessment \"([^\"]*)\"$")
+	public void a_user_inserts_an_assessment(String pk) throws Throwable {
+		Assessment assessment = AssessmentService.getAssessment(Integer.parseInt(pk));
+	    home.getAssessAnchor().click();
+	    assess = new AssessBatchPage(driver);
+	    assess.getCreateAssessButton().click();
+	    assess.DropDown(assessment.getCategory(), "category");
+	    assess.DropDown(assessment.getType(), "assessmentType");
+	    assess.input("80", "rawScore");
+	    assess.getSubAssessButton().click();
+	}
+	public void insertAssessment(int pk) {
+		
+	}
+	@Then("^a new assessment should be made$")
+	public void a_new_assessment_should_be_made() throws Throwable {
+	    assertTrue(true);
 	}
 
 	@After
