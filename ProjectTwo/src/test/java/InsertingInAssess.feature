@@ -4,13 +4,23 @@ Feature: Testing insertion of elements on the assess batch page
     Given a user opens a webbrowser
     And navigates to caliber
 
-  Scenario Outline: 
+  Scenario Outline: adding a new assessment
     When user clicks "<button>"
-    And user input "<points>"
+    And user selects "<category>" from "<categories>"
+    And user input "<point>" from "<points>"
     And user selects "<type>" from "<types>"
     And user clicks "<submit>"
     Then new assessment should be created
 
     Examples: 
-      | button       | points | type    | submit    | types |
-      | createAssess |     21 | Project | subAssess | type  |
+      | button       | category | categories | point | points | type    | types | submit    |
+      | createAssess | Java     | categories |    21 | point  | Project | type  | subAssess |
+
+  Scenario Outline: adding a new week
+    When user clicks "<button>"
+    And user clicks "<submit>"
+    Then new week should be created
+
+    Examples: 
+      | button     | submit  |
+      | createWeek | subWeek |

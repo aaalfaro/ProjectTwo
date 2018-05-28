@@ -165,6 +165,10 @@ public class CaliberStepImpl {
 			wait.until(ExpectedConditions.visibilityOf(manage.getSubCreateBatchButton()));
 			manage.getSubCreateBatchButton().submit();
 			break;
+		case "subWeek":
+			wait.until(ExpectedConditions.visibilityOf(assess.getSubCreateWeekButton()));
+			assess.getSubCreateWeekButton().click();
+			break;
 		default:
 			throw new IllegalArgumentException();
 		}
@@ -392,10 +396,10 @@ public class CaliberStepImpl {
 
 		switch (arg2) {
 		case "point":
-			assess.getPointInput().sendKeys(arg1);
+			assess.input(arg1, "rawScore");
 			break;
 		case "name":
-			manage.getNameInput().sendKeys(arg1);
+			manage.input(arg1, "trainingName");
 			break;
 		case "startDate":
 			manage.getStartDateInput().sendKeys(arg1);
@@ -404,10 +408,43 @@ public class CaliberStepImpl {
 			manage.getEndDateInput().sendKeys(arg1);
 			break;
 		case "goodGrade":
-			manage.getGoodGradeInput().sendKeys(arg1);
+			manage.input(arg1, "goodGrade");
 			break;
 		case "passingGrade":
-			manage.getPassingGradeInput().sendKeys(arg1);
+			manage.input(arg1, "borderlineGrade");
+			break;// *[@id="traineePhone"]
+		case "traineeName":
+			manage.getInputForTraineeName(0).sendKeys(arg2);
+			break;
+		case "email":
+			manage.input(arg1, "traineeEmail");
+			break;
+		case "skype":
+			manage.input(arg1, "traineeSkype");
+			break;
+		case "phone":
+			manage.input(arg1, "traineePhone");
+			break;
+		case "college":
+			manage.input(arg1, "traineeCollege");
+			break;
+		case "degree":
+			manage.input(arg1, "traineeDegree");
+			break;
+		case "major":
+			manage.input(arg1, "traineeMajor");
+			break;
+		case "recruit":
+			manage.input(arg1, "traineeRecruiterName");
+			break;
+		case "screen":
+			manage.input(arg1, "traineeTechScreenerName");
+			break;
+		case "url":
+			manage.getInputForTraineeName(1).sendKeys(arg2);
+			break;
+		case "completion":
+			manage.input(arg1, "traineeProjectCompletion");
 			break;
 		default:
 			throw new IllegalArgumentException();
@@ -418,7 +455,7 @@ public class CaliberStepImpl {
 	public void user_selects_from(String arg1, String arg2) throws Throwable {
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		switch (arg2) {
-		case "category":
+		case "categories":
 			assess.DropDown(arg1, "category");
 			break;
 		case "type":
@@ -439,6 +476,9 @@ public class CaliberStepImpl {
 		case "trainer":
 			manage.DropDown(arg1, "trainer");
 			break;
+		case "status":
+			manage.DropDown(arg1, "traineeStatus");
+			break;
 		default:
 			throw new IllegalArgumentException();
 		}
@@ -447,6 +487,16 @@ public class CaliberStepImpl {
 	@Then("^new assessment should be created$")
 	public void new_assessment_should_be_created() throws Throwable {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		assertTrue(true);
+	}
+
+	@Then("^new week should be created$")
+	public void new_week_should_be_created() throws Throwable {
+		assertTrue(true);
+	}
+
+	@Then("^new trainee should be created$")
+	public void new_trainee_should_be_created() throws Throwable {
 		assertTrue(true);
 	}
 }

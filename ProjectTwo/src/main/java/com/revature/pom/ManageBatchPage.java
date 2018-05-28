@@ -112,10 +112,6 @@ public class ManageBatchPage extends POM{
 		return driver.findElement(By.cssSelector("#createBatchModal > div > div > div.modal-footer > input"));
 	}
 
-	public WebElement getNameInput() {
-		return driver.findElement(By.xpath("//*[@id=\"trainingName\"]"));
-	}
-
 	public WebElement getStartDateInput() {
 		return driver.findElement(By.xpath("//*[@id=\"start-date\"]/input"));
 	}
@@ -124,12 +120,8 @@ public class ManageBatchPage extends POM{
 		return driver.findElement(By.xpath("//*[@id=\"end-date\"]/input"));
 	}
 
-	public WebElement getGoodGradeInput() {	
-		return driver.findElement(By.xpath("//*[@id=\"goodGrade\"]"));
-	}
-
-	public WebElement getPassingGradeInput() {
-		return driver.findElement(By.xpath("//*[@id=\"borderlineGrade\"]"));
+	public WebElement getInputForTraineeName(int index) {
+		return driver.findElements(By.cssSelector("#traineeName")).get(index);
 	}
 	public void selectLocation(String input, String locator) {
 		String path;
@@ -151,6 +143,7 @@ public class ManageBatchPage extends POM{
 		}
 		throw new IllegalArgumentException("Not a valid month");
 		}
+
 	
 	}
 

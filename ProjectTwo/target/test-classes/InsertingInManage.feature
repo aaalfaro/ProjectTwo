@@ -4,20 +4,22 @@ Feature: Testing insertion of elements on the manage batch page
     Given a user opens a webbrowser
     And navigates to caliber
 
-  Scenario Outline: inserting new batch
+  Scenario Outline: inserting a new Trainee in a batch
     When user clicks "<button>"
     And user input "<name>" from "<nameLocation>"
-    And user selects "<Trainingtype>" from "<Trainingtypes>"
-    And user selects "<Skilltype>" from "<Skilltypes>"
-    And user selects "<Location>" from "<Locations>"
-    And user selects "<Trainer>" from "<Trainers>"
-    And user input "<startDate>" from "<startDateLocation>"
-    And user input "<EndDate>" from "<endDateLocation>"
-    And user input "<GoodGrade>" from "<goodGradeLocation>"
-    And user input "<PassingGrade>" from "<passingGradeLocation>"
-    And user clicks "<submit>"
-    Then new assessment should be created
+    And user input "<email>" from "<emailLocation>"
+    And user input "<skype>" from "<skypeLocation>"
+    And user input "<phone>" from "<phoneLocation>"
+    And user input "<college>" from "<collegeLocation>"
+    And user input "<degree>" from "<degreeLocation>"
+    And user input "<major>" from "<majorLocation>"
+    And user input "<recruitName>" from "<recruitLocation>"
+    And user input "<techScreenName>" from "<techScreenLocation>"
+    And user input "<completion>" from "<completionLocation>"
+    And user input "<URL>" from "<URLLocation>"
+    And user selects "<status>" from "<statusTypes>"
+    Then new trainee should be created
 
     Examples: 
-      | button      | name | nameLocation | Trainingtype | Trainingtypes | Skilltype | Skilltypes | Location                                                           | Locations | Trainer | Trainers | startDate | startDateLocation | EndDate  | endDateLocation | GoodGrade | goodGradeLocation | PassingGrade | passingGradeLocation | submit         |
-      | createBatch | Name | name         | Revature     | training      | J2EE      | skill      | Revature LLC, 11730 Plaza America Drive, 2nd Floor Reston VA 20190 | VA        | Name    | trainer  |  05272017 | startDate         | 07272017 | endDate         |        62 | goodGrade         |           55 | passingGrade         | subCreateBatch |
+      | button     | name        | nameLocation | email          | emailLocation | skype  | skypeLocation | phone      | phoneLocation | college | collegeLocation | degree       | degreeLocation | major   | majorLocation | recruitName | recruitLocation | techScreenName | techScreenLocation | completion | completionLocation | URL             | URLLocation | status  | statusTypes |
+      | addTrainee | New Trainee | traineeName  | fake@gmail.com | email         | FakeId | skype         | 1238906483 | phone         | Fake U  | college         | Fake Science | degree         | Alchemy | major         | Bob Ross    | recruit         | Bill Williams  | screen             |         45 | completion         | www.notAURL.com | url         | Dropped | status      |

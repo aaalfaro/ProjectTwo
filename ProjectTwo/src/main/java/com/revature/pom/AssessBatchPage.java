@@ -21,7 +21,7 @@ public class AssessBatchPage extends POM{
 		return driver.findElement(By.cssSelector("body > div > ui-view > ui-view > div:nth-child(1) > div > div.col-md-12.col-lg-12.top10 > ul:nth-child(1) > li.pull-right > a"));
 	}
 	public WebElement getCreateWeekButton() {
-		return driver.findElement(By.xpath("/html/body/div/ui-view/ui-view/div[1]/div/div[3]/ul/li[9]/a/span"));
+		return driver.findElements(By.className("glyphicon-plus")).get(2);
 	}
 	public String getCreateWeekId() {
 		return driver.findElement(By.xpath("//*[@id=\"myModalLabel\"]")).getTagName();
@@ -67,8 +67,8 @@ public class AssessBatchPage extends POM{
 		return driver.findElement(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/form/div[2]/input"));
 	}
 
-	public WebElement getPointInput() {
-		return driver.findElement(By.xpath("//*[@id=\"rawScore\"]"));
+	public WebElement getSubCreateWeekButton() {
+		return driver.findElement(By.xpath("//*[@id=\"yesBtn\"]"));
 	}
 
 	
