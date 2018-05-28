@@ -25,11 +25,18 @@ public class ManageBatchPage extends POM{
 	public WebElement getImportBatchButton() {
 		return driver.findElement(By.cssSelector("#manage > div:nth-child(1) > div > div > ul > li:nth-child(2) > a"));
 	}
-	public WebElement getViewBatchButton() {
-		return driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr[1]/td[11]/a/span/p"));
-	}
-	public WebElement getUpdateBatchButton() {
-		return driver.findElement(By.cssSelector("#manage > div:nth-child(2) > div > div > table > tbody > tr:nth-child(1) > td:nth-child(12) > a > span"));
+	public WebElement getViewBatchButton(String locator) {
+		if(locator.equals("0")) {			
+			return driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr[1]/td[11]/a/span"));
+			}
+			return driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+locator+"]/td[11]/a/span"));
+			}
+	
+	public WebElement getUpdateBatchButton(String locator) {
+		if(locator.equals("0")) {
+			return driver.findElement(By.cssSelector("#manage > div:nth-child(2) > div > div > table > tbody > tr > td:nth-child(12) > a"));
+		}
+		return driver.findElement(By.cssSelector("#manage > div:nth-child(2) > div > div > table > tbody > tr:nth-child("+locator +") > td:nth-child(12) > a > span"));
 	}
 	public WebElement getDeleteBatchButton() {
 		return driver.findElement(By.cssSelector("#manage > div:nth-child(2) > div > div > table > tbody > tr:nth-child(1) > td:nth-child(13) > a > span"));
@@ -37,9 +44,12 @@ public class ManageBatchPage extends POM{
 	public WebElement getAddTraineeButton() {		
 		return driver.findElement(By.cssSelector("#viewTraineeModal > div > div > div.modal-body.only-top-padding > div.col-md-12.col-lg-12 > div > div > a"));
 	}
-	public WebElement getUpdateTraineeButton() {
-		return driver.findElement(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr[1]/td[14]/a/span"));
-	}
+	public WebElement getUpdateTraineeButton(String locator) {
+		if(locator.equals("0")) {			
+			return driver.findElement(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr/td[14]/a"));
+			}
+			return driver.findElement(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr["+locator+"]/td[14]/a"));
+			}
 	public String getCreateBatchId() {
 		return driver.findElement(By.xpath("//*[@id=\"batchModalLabel\"]")).getTagName();
 	}
@@ -158,6 +168,18 @@ public class ManageBatchPage extends POM{
 		}
 		throw new IllegalArgumentException("Not a valid month");
 		}
+
+	public WebElement getBatchUpdateSub() {
+		return driver.findElement(By.xpath("//*[@id=\"createBatchModal\"]/div/div/div[3]/input"));
+	}
+
+	public WebElement getSubTraineeButton() {
+		return driver.findElement(By.xpath("//*[@id=\"addTraineeModal\"]/div/div/div[2]/div[2]/input[1]"));
+	}
+	public WebElement getSubTraineeUpdateButton() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	
 	}

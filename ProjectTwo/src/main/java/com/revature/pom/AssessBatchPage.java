@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,11 +30,11 @@ public class AssessBatchPage extends POM{
 	}
 	public String getCreateAssessId() {
 		return driver.findElement(By.cssSelector("#confirmingweeks > div > div > div.modal-body > div > h4:nth-child(1)")).getTagName();	}
-	public String getUpdateAssessId() {
+	public String getUpdateAssessId() {		
 		return driver.findElement(By.xpath("//*[@id=\"editAssessmentModal_155021\"]/div/div/div[2]/div/div[1]/label")).getTagName();
 	}
-	public WebElement getUpdateAssessButton() {
-		return driver.findElement(By.xpath("//*[@id=\"trainer-assess-table\"]/div/div/ul/ul/table/thead/tr/th[3]"));
+	public WebElement getUpdateAssessButton(String locator) {
+		return driver.findElement(By.xpath("//*[@id=\"trainer-assess-table\"]/div/div/ul/ul/table/thead/tr/th["+locator+"]"));
 	}
 	public List<String> getCategories(){
 		List<WebElement> webList = driver.findElements(By.xpath("//*[@id=\"category\"]"));
@@ -102,4 +103,22 @@ public class AssessBatchPage extends POM{
 		}
 		throw new IllegalArgumentException("Not a valid month");
 		}
+	public void updateDropDown(String input,String locator) {
+		WebElement list = driver.findElements(By.xpath("//*[@id=\""+locator+"\"]")).get(0);
+		List<WebElement> listOfElements = list.findElements(By.className("option"));
+		wait.until(ExpectedConditions.visibilityOf(list));
+		Select select = new Select(driver.findElements(By.cssSelector("#"+locator)).get(0));
+		for(WebElement el : listOfElements) {
+			if(el.getText().equals(input)) {
+			wait.until(ExpectedConditions.visibilityOf(el));
+				select.selectByIndex(2);
+				return;
+			}
+			
+		}
+		throw new IllegalArgumentException("Not a valid month");
+		}
+	public WebElement getSubmitUpdateButton() {
+		return driver.findElement(By.xpath("//*[@id=\"editAssessmentModal_155027\"]/div/div/div[3]/div[2]/input"));
+	}
 }

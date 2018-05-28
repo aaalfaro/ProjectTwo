@@ -11,15 +11,11 @@ Feature: Testing the buttons that bring up menus
     Examples: 
       | button        | popUp         |
       | viewTrainees  | viewTrainees  |
-      | updateBatch   | updateBatch   |
       | deleteBatch   | deleteBatch   |
       | addTrainee    | addTrainee    |
-      | updateTrainee | updateTrainee |
       | importBatch   | importBatch   |
       | createAssess  | createAssess  |
       | createWeek    | createWeek    |
-      | updateTrainee | updateTrainee |
-      | updateAssess  | updateAssess  |
       | save          | save          |
 
 

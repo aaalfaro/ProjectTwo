@@ -101,12 +101,7 @@ public class CaliberStepImpl {
 		case "viewTrainees":
 			home.getManageAnchor().click();
 			manage = new ManageBatchPage(driver);
-			manage.getViewBatchButton().click();
-			break;
-		case "updateBatch":
-			home.getManageAnchor().click();
-			manage = new ManageBatchPage(driver);
-			manage.getUpdateBatchButton().click();
+			manage.getViewBatchButton("0").click();
 			break;
 		case "deleteBatch":
 			home.getManageAnchor().click();
@@ -116,7 +111,7 @@ public class CaliberStepImpl {
 		case "addTrainee":
 			home.getManageAnchor().click();
 			manage = new ManageBatchPage(driver);
-			manage.getViewBatchButton().click();
+			manage.getViewBatchButton("0").click();
 			wait.until(ExpectedConditions.visibilityOf(manage.getAddTraineeButton()));
 			manage.getAddTraineeButton().click();
 			break;
@@ -130,18 +125,6 @@ public class CaliberStepImpl {
 			assess = new AssessBatchPage(driver);
 			wait.until(ExpectedConditions.elementToBeClickable(assess.getCreateWeekButton()));
 			assess.getCreateWeekButton().click();
-			break;
-		case "updateAssess":
-			home.getAssessAnchor().click();
-			assess = new AssessBatchPage(driver);
-			assess.getUpdateAssessButton().click();
-			break;
-		case "updateTrainee":
-			home.getManageAnchor().click();
-			manage = new ManageBatchPage(driver);
-			manage.getViewBatchButton().click();
-			wait.until(ExpectedConditions.visibilityOf(manage.getUpdateTraineeButton()));
-			manage.getUpdateTraineeButton().click();
 			break;
 		case "createBatch":
 			home.getManageAnchor().click();
@@ -164,11 +147,21 @@ public class CaliberStepImpl {
 			break;
 		case "subCreateBatch":
 			wait.until(ExpectedConditions.visibilityOf(manage.getSubCreateBatchButton()));
-			manage.getSubCreateBatchButton().submit();
+			manage.getSubCreateBatchButton().click();
 			break;
 		case "subWeek":
 			wait.until(ExpectedConditions.visibilityOf(assess.getSubCreateWeekButton()));
 			assess.getSubCreateWeekButton().click();
+			break;
+		case "upAssess":
+			wait.until(ExpectedConditions.visibilityOf(assess.getSubCreateWeekButton()));
+			assess.getSubmitUpdateButton().submit();
+			break;
+		case "subBatch":
+			manage.getBatchUpdateSub().click();
+			break;
+		case "subTrainee":
+			manage.getSubTraineeButton().click();
 			break;
 		default:
 			throw new IllegalArgumentException();
@@ -441,6 +434,9 @@ public class CaliberStepImpl {
 		case "completion":
 			manage.input(arg1, "traineeProjectCompletion");
 			break;
+		case"updatePoint":
+			assess.updateDropDown(arg1, "rawScore");
+			break;
 		default:
 			throw new IllegalArgumentException();
 		}
@@ -455,6 +451,12 @@ public class CaliberStepImpl {
 			break;
 		case "type":
 			assess.DropDown(arg1, "assessmentType");
+			break;
+		case "updateCategory":
+			assess.updateDropDown(arg1, "category");
+			break;
+		case "updateType":
+			assess.updateDropDown(arg1, "assessmentType");
 			break;
 		case "training":
 			manage.DropDown(arg1, "trainingType");
@@ -509,6 +511,26 @@ public class CaliberStepImpl {
 		case "weekTab":
 			assess= new AssessBatchPage(driver);
 			assess.weekTab(arg1);
+		case "updateAssess":
+			home.getAssessAnchor().click();
+			assess = new AssessBatchPage(driver);
+			assess.getUpdateAssessButton(arg1).click();
+			break;
+		case "updateBatch":
+			home.getManageAnchor().click();
+			manage = new ManageBatchPage(driver);
+			manage.getUpdateBatchButton(arg1).click();
+			break;
+		case "upTrainee":
+			wait.until(ExpectedConditions.visibilityOf(manage.getUpdateTraineeButton(arg1)));
+			manage.getUpdateTraineeButton(arg1).click();
+			break;
+		case "viewBatch":
+			home.getManageAnchor().click();
+			manage = new ManageBatchPage(driver);
+			manage.yearDropDown("2016", "");
+			manage.getViewBatchButton(arg1).click();
+			break;
 		default:
 			throw new IllegalArgumentException();
 		}
