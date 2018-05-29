@@ -28,16 +28,19 @@ public class Assessment {
 	@Column(name="TYPE")
 	private String type;
 	
+	@Column(name="POINT")
+	private String point;
 	
 
 	public Assessment() {
 		super();
 	}
 
-	public Assessment(String category, String type) {
+	public Assessment(String category, String type, String point) {
 		super();
 		this.category = category;
 		this.type = type;
+		this.point = point;
 	}
 
 	public int getId() {
@@ -63,10 +66,20 @@ public class Assessment {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	
+
+	public String getPoint() {
+		return point;
+	}
+
+	public void setPoint(String point) {
+		this.point = point;
+	}
 
 	@Override
 	public String toString() {
-		return "Assessment [id=" + id + ", category=" + category + ", type=" + type + "]";
+		return "Assessment [id=" + id + ", category=" + category + ", type=" + type + ", point=" + point + "]";
 	}
 	
 	
