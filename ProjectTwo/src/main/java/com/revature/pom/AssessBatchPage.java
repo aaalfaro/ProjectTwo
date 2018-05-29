@@ -110,7 +110,7 @@ public class AssessBatchPage extends POM{
 		for(WebElement el : listOfElements) {
 			if(el.getText().equals(input)) {
 			wait.until(ExpectedConditions.visibilityOf(el));
-				select.selectByIndex(2);
+			select.selectByVisibleText(el.getText());
 				return;
 			}
 			

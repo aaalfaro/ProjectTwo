@@ -14,12 +14,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.revature.Driver.DriverFactory;
 import com.revature.model.Assessment;
+import com.revature.model.Batch;
+import com.revature.model.Trainee;
 import com.revature.pom.AssessBatchPage;
 import com.revature.pom.HomePage;
 import com.revature.pom.ManageBatchPage;
 import com.revature.pom.POM;
 import com.revature.pom.ReportPage;
 import com.revature.service.AssessmentService;
+import com.revature.service.BatchService;
+import com.revature.service.TraineeService;
 
 import cucumber.api.DataTable;
 import cucumber.api.java.After;
@@ -621,11 +625,66 @@ public class CaliberStepImpl {
 	    assess.input("80", "rawScore");
 	    assess.getSubAssessButton().click();
 	}
-	public void insertAssessment(int pk) {
-		
-	}
 	@Then("^a new assessment should be made$")
 	public void a_new_assessment_should_be_made() throws Throwable {
+	    assertTrue(true);
+	}
+	@When("^a user inserts a batch \"([^\"]*)\"$")
+	public void a_user_inserts_a_batch(String arg1) throws Throwable {
+	   Batch batch = BatchService.getBatch(Integer.parseInt(arg1));
+	   home.getManageAnchor().click();
+	   manage = new ManageBatchPage(driver);
+	   manage.getCreateBatchButton().click();
+		//manage.DropDown(batch.getType(), "trainingType");
+		//manage.DropDown(batch.getSkill(), "skillType");
+		//manage.selectLocation(arg1, arg2);
+		//manage.DropDown(batch.getTrainer(), "trainer");
+		//manage.DropDown(batch.getCoTrainer(), "co-trainer");
+		String start = ""+batch.getMonth() + batch.getDay() + batch.getYear();
+		String end = ""+batch.getMonth() + batch.getDay() + batch.getYear();
+		manage.getStartDateInput().sendKeys(start);
+		manage.getEndDateInput().sendKeys(end);
+		manage.input(arg1, ""+batch.getGoodGrade());
+		manage.input(arg1, ""+batch.getPassingGrade());
+	}
+
+	@Then("^a new batch should be made$")
+	public void a_new_batch_should_be_made() throws Throwable {
+	    assertTrue(true);
+	}
+
+	@When("^a user inserts a trainee \"([^\"]*)\"$")
+	public void a_user_inserts_a_trainee(String arg1) throws Throwable {
+		Trainee trainee = TraineeService.getTrainee(Integer.parseInt(arg1));
+		home.getManageAnchor().click();
+		manage = new ManageBatchPage(driver);
+		manage.input(trainee.getEmail(), "traineeEmail");
+		manage.input(trainee.getSkype(), "traineeSkype");
+		manage.input(trainee.getPhone(), "traineePhone");
+		manage.input(trainee.getCollege(), "traineeCollege");
+		manage.input(trainee.getDegree(), "traineeDegree");
+		manage.input(trainee.getMajor(), "traineeMajor");
+		manage.input(trainee.getRecruiter(), "traineeRecruiterName");
+		manage.input(trainee.getScreener(), "traineeTechScreenerName");
+		manage.getInputForTraineeName(1).sendKeys(trainee.getName());
+		//manage.DropDown(trainee.getStatus(), "traineeStatus");
+	}
+
+	@Then("^a new trainee should be made$")
+	public void a_new_trainee_should_be_made() throws Throwable {
+	    assertTrue(true);
+	}
+	
+	@When("^a user clicks the add week button$")
+	public void a_user_clicks_the_add_week_button() throws Throwable {
+	    home.getAssessAnchor().click();
+	    assess = new AssessBatchPage(driver);
+	    assess.getCreateWeekButton().click();
+	    assess.getSubCreateWeekButton().click();
+	}
+
+	@Then("^a week should be added$")
+	public void a_week_should_be_added() throws Throwable {
 	    assertTrue(true);
 	}
 
