@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class TrainingType {
 	@Column(name="TYPE_NAME")
 	private String type;
 	
-	@OneToMany(mappedBy="type")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="type")
 	public List<Batch> batches;
 	
 	public TrainingType() {

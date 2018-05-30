@@ -493,7 +493,7 @@ public class CaliberStepImpl {
 			break;
 		case "manageYear":
 			manage = new ManageBatchPage(driver);
-			manage.yearDropDown(arg1, arg2);
+			manage.yearDropDown(arg1);
 			break;
 		case "assessYear":
 			assess = new AssessBatchPage(driver);
@@ -543,7 +543,7 @@ public class CaliberStepImpl {
 		case "viewBatch":
 			home.getManageAnchor().click();
 			manage = new ManageBatchPage(driver);
-			manage.yearDropDown("2016", "");
+			manage.yearDropDown("2016");
 			manage.getViewBatchButton(arg1).click();
 			break;
 		case "deleteAssess":
@@ -554,7 +554,7 @@ public class CaliberStepImpl {
 		case "deleteBatch":
 			home.getManageAnchor().click();
 			manage = new ManageBatchPage(driver);
-			manage.yearDropDown("2016", "");
+			manage.yearDropDown("2016");
 			manage.getDeleteBatchButton(arg1).click();
 			break;	
 		default:
@@ -633,19 +633,22 @@ public class CaliberStepImpl {
 	public void a_user_inserts_a_batch(String arg1) throws Throwable {
 	   Batch batch = BatchService.getBatch(Integer.parseInt(arg1));
 	   home.getManageAnchor().click();
+	   System.out.println("here");
 	   manage = new ManageBatchPage(driver);
 	   manage.getCreateBatchButton().click();
-		//manage.DropDown(batch.getType(), "trainingType");
-		//manage.DropDown(batch.getSkill(), "skillType");
-		//manage.selectLocation(arg1, arg2);
-		//manage.DropDown(batch.getTrainer(), "trainer");
-		//manage.DropDown(batch.getCoTrainer(), "co-trainer");
-		String start = ""+batch.getMonth() + batch.getDay() + batch.getYear();
-		String end = ""+batch.getMonth() + batch.getDay() + batch.getYear();
+	    manage.input(batch.getName(), "trainingName");
+		manage.DropDown(batch.getType().getType(), "trainingType");
+		manage.DropDown(batch.getSkill().getType(), "skillType");
+		manage.selectLocation(batch.getLocation(),batch.getLocationCategory() );
+		manage.DropDown(batch.getTrainers().get(0).getName(), "trainer");
+		manage.DropDown(batch.getTrainers().get(1).getName(), "co-trainer");
+		String start = ""+batch.getStartDate();
+		String end = ""+batch.getEndDate();
 		manage.getStartDateInput().sendKeys(start);
 		manage.getEndDateInput().sendKeys(end);
-		manage.input(arg1, ""+batch.getGoodGrade());
-		manage.input(arg1, ""+batch.getPassingGrade());
+		manage.input(""+batch.getGoodGrade(),"goodGrade");
+		manage.input(""+batch.getPassingGrade(),"borderlineGrade");
+		manage.getSubCreateBatchButton().click();
 	}
 
 	@Then("^a new batch should be made$")
@@ -658,6 +661,11 @@ public class CaliberStepImpl {
 		Trainee trainee = TraineeService.getTrainee(Integer.parseInt(arg1));
 		home.getManageAnchor().click();
 		manage = new ManageBatchPage(driver);
+		manage.yearDropDown("2016");
+		manage.getViewBatchButton("0").click();
+		wait.until(ExpectedConditions.visibilityOf(manage.getAddTraineeButton()));
+		manage.getAddTraineeButton().click();
+		manage.input(trainee.getName(), "traineeName");
 		manage.input(trainee.getEmail(), "traineeEmail");
 		manage.input(trainee.getSkype(), "traineeSkype");
 		manage.input(trainee.getPhone(), "traineePhone");
@@ -667,7 +675,8 @@ public class CaliberStepImpl {
 		manage.input(trainee.getRecruiter(), "traineeRecruiterName");
 		manage.input(trainee.getScreener(), "traineeTechScreenerName");
 		manage.getInputForTraineeName(1).sendKeys(trainee.getName());
-		//manage.DropDown(trainee.getStatus(), "traineeStatus");
+		manage.DropDown(trainee.getStatus().getStatus(), "traineeStatus");
+		manage.getSubTraineeButton().click();
 	}
 
 	@Then("^a new trainee should be made$")

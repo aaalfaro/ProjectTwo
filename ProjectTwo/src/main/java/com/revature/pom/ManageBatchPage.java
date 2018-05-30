@@ -133,7 +133,7 @@ public class ManageBatchPage extends POM{
 	public WebElement getInputForTraineeName(int index) {
 		return driver.findElements(By.cssSelector("#traineeName")).get(index);
 	}
-	public void yearDropDown(String input,String locator) {					
+	public void yearDropDown(String input) {					
 		WebElement list = driver.findElement(By.xpath("//*[@id=\"manage\"]/div[1]/div/div/ul/li[1]"));
 		list.click();
 		List<WebElement> listOfElements = list.findElements(By.tagName("a"));

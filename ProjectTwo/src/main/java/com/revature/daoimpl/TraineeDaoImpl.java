@@ -27,7 +27,7 @@ public class TraineeDaoImpl implements TraineeDao {
 		Session session = null;
 		try {
 			session = HibernateUtility.getSessionFactory().openSession();
-			Trainee trainee = session.createQuery("from Trainee t where t.id like : id",Trainee.class).setParameter("id", id).getSingleResult();
+			Trainee trainee = session.createQuery("from Trainee t where t.id like :id",Trainee.class).setParameter("id", id).getSingleResult();
 			return trainee;
 		}catch (HibernateException hbe) {
 			hbe.printStackTrace();

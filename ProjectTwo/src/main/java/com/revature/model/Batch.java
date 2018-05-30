@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -51,7 +52,7 @@ public class Batch {
 	@Column(name="END_DATE")
 	private String endDate;
 	
-	@OneToMany(mappedBy="batch")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="batch")
 	public List<Trainer> trainers;
 	
 	@ManyToOne

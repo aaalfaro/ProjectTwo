@@ -5,7 +5,12 @@ Feature: Testing insertion of elements on the assess batch page
     And navigates to caliber
 
 
+Scenario Outline: inserting a new Trainee
+    When a user inserts a trainee "<pk>"
+    Then a new trainee should be made
 
-  Scenario: a user adds a week
-  	When a user clicks the add week button
-  	Then a week should be added
+    Examples: 
+      | pk  |
+      | 183 |
+
+ 
