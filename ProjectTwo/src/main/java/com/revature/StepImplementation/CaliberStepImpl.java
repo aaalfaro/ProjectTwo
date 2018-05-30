@@ -622,7 +622,7 @@ public class CaliberStepImpl {
 	    assess.getCreateAssessButton().click();
 	    assess.DropDown(assessment.getCategory(), "category");
 	    assess.DropDown(assessment.getType(), "assessmentType");
-	    assess.input("80", "rawScore");
+	    assess.input(assessment.getPoint(), "rawScore");
 	    assess.getSubAssessButton().click();
 	}
 	@Then("^a new assessment should be made$")

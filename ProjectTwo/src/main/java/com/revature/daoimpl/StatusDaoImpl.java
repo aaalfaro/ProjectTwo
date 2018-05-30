@@ -46,7 +46,7 @@ public class StatusDaoImpl implements StatusDao {
 		Session session = null;
 		try {
 			session = HibernateUtility.getSessionFactory().openSession();
-			List<Status> status = session.createQuery("from com.revature.model.status", Status.class).getResultList();
+			List<Status> status = session.createQuery("from com.revature.model.Status", Status.class).getResultList();
 			return status;
 		}catch (HibernateException hbe) {
 			hbe.printStackTrace();

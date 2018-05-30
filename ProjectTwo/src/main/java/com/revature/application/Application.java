@@ -1,10 +1,8 @@
 package com.revature.application;
 
-import java.util.List;
-
-import com.revature.model.Batch;
+import com.revature.model.Status;
 import com.revature.model.Trainee;
-import com.revature.service.BatchService;
+import com.revature.service.StatusService;
 import com.revature.service.TraineeService;
 
 public class Application {
@@ -51,8 +49,11 @@ public class Application {
 //		Trainee Andy = new Trainee("Andy Alfaro", "andy@alfaro.com", "aaa91", "123-456-7890", "Mt St Mary's University", "Bachelors Science",
 //				"Computer Science", "some guy", "lolwut", 100, "www.fakeurl.com");
 //		TraineeService.insertTrainee(Andy);
-		
-		
+	
+		Status status = StatusService.getEverything().get(0);
+		System.out.println(status);
+		Trainee Bobby = new Trainee("Bobby","fake@email.com","aaaa","1234567890","A Good University","Culinary Alchemy","Cooking with fire","recruit","screener",50,"url.com",status);
+		TraineeService.insertTrainee(Bobby);
 	}
 }
 

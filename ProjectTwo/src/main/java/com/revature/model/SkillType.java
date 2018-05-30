@@ -1,10 +1,13 @@
 package com.revature.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -25,7 +28,8 @@ public class SkillType {
 	@Column(name=("SKILL_NAME"))
 	private String type;
 	
-	
+	@OneToMany(mappedBy="skill")
+	private List<Batch> batches;
 
 	public SkillType() {
 		super();
@@ -34,6 +38,14 @@ public class SkillType {
 	public SkillType(String type) {
 		super();
 		this.type = type;
+	}
+	
+
+	public SkillType(int id, String type, List<Batch> batches) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.batches = batches;
 	}
 
 	public int getId() {
@@ -52,10 +64,19 @@ public class SkillType {
 		this.type = type;
 	}
 
+	public List<Batch> getBatches() {
+		return batches;
+	}
+
+	public void setBatches(List<Batch> batches) {
+		this.batches = batches;
+	}
+
 	@Override
 	public String toString() {
-		return "SkillType [id=" + id + ", type=" + type + "]";
+		return "SkillType [id=" + id + ", type=" + type + ", batches=" + batches + "]";
 	}
+
 	
 	
 }

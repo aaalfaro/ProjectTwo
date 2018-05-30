@@ -59,10 +59,34 @@ public class Trainee {
 	
 	@Column(name="URL")
 	private String url;
+
+	@ManyToOne
+	@JoinColumn(name= "STATUS_ID")
+	private Status status;
 	
 	public Trainee() {
 		super();
 	}
+	
+	public Trainee(String name, String email, String skype, String phone, String college, String degree,
+			String major, String recruiter, String screener, int completion, String url, Status status) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.skype = skype;
+		this.phone = phone;
+		this.college = college;
+		this.degree = degree;
+		this.major = major;
+		this.recruiter = recruiter;
+		this.screener = screener;
+		this.completion = completion;
+		this.url = url;
+		this.status = status;
+	}
+
+
+
 
 	public Trainee(String name, String email, String skype, String phone, String college, String degree, String major,
 			String recruiter, String screener, int completion, String url) {
@@ -176,12 +200,22 @@ public class Trainee {
 		this.url = url;
 	}
 
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "Trainee [id=" + id + ", name=" + name + ", email=" + email + ", skype=" + skype + ", phone=" + phone
 				+ ", college=" + college + ", degree=" + degree + ", major=" + major + ", recruiter=" + recruiter
-				+ ", screener=" + screener + ", completion=" + completion + ", url=" + url + "]";
+				+ ", screener=" + screener + ", completion=" + completion + ", url=" + url + ", status=" + status + "]";
 	}
+
+	
 	
 	
 	

@@ -3,12 +3,16 @@ package com.revature.model;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -32,36 +36,52 @@ public class Batch {
 	@Column(name="LOCATION")
 	private String location;
 	
+	@Column(name="LOCATION_CATEGORY")
+	private String locationCategory;
+	
 	@Column(name="GOOD_GRADE")
 	private int goodGrade;
 	
 	@Column(name="PASSING_GRADE")
 	private int passingGrade;
 	
-	@Column(name="MONTH")
-	private int month;
+	@Column(name="START_DATE")
+	private String startDate;
 	
-	@Column(name="DAY")
-	private int day;
+	@Column(name="END_DATE")
+	private String endDate;
 	
-	@Column(name="YEAR")
-	private int year;
+	@OneToMany(mappedBy="batch")
+	public List<Trainer> trainers;
 	
+	@ManyToOne
+	@JoinColumn(name = "SKILL_ID")
+	private SkillType skill;
 	
+	@ManyToOne
+	@JoinColumn(name = "TYPE_ID")
+	private TrainingType type;
 	public Batch() {
 		super();
 	}
 
-	public Batch(String name, String location, int goodGrade, int passingGrade, int month, int day, int year) {
+	
+	
+	public Batch(String name, String location, String locationCategory, int goodGrade, int passingGrade,
+			String startDate, String endDate, List<Trainer> trainers, SkillType skill, TrainingType type) {
 		super();
 		this.name = name;
 		this.location = location;
+		this.locationCategory = locationCategory;
 		this.goodGrade = goodGrade;
 		this.passingGrade = passingGrade;
-		this.day = day;
-		this.month = month;
-		this.year = year;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.trainers = trainers;
+		this.skill = skill;
+		this.type = type;
 	}
+
 
 	public int getId() {
 		return id;
@@ -103,35 +123,81 @@ public class Batch {
 		this.passingGrade = passingGrade;
 	}
 	
-	public int getMonth() {
-		return month;
+
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setMonth(int month) {
-		this.month = month;
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
 
-	public int getDay() {
-		return day;
+	public String getEndDate() {
+		return endDate;
 	}
 
-	public void setDay(int day) {
-		this.day = day;
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+	
+
+	public String getLocationCategory() {
+		return locationCategory;
 	}
 
-	public int getYear() {
-		return year;
+
+
+	public void setLocationCategory(String locationCategory) {
+		this.locationCategory = locationCategory;
 	}
 
-	public void setYear(int year) {
-		this.year = year;
+
+
+	public List<Trainer> getTrainers() {
+		return trainers;
 	}
+
+
+
+	public void setTrainers(List<Trainer> trainers) {
+		this.trainers = trainers;
+	}
+
+
+
+	public SkillType getSkill() {
+		return skill;
+	}
+
+
+
+	public void setSkill(SkillType skill) {
+		this.skill = skill;
+	}
+
+
+
+	public TrainingType getType() {
+		return type;
+	}
+
+
+
+	public void setType(TrainingType type) {
+		this.type = type;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "Batch [id=" + id + ", name=" + name + ", location=" + location + ", goodGrade=" + goodGrade
-				+ ", passingGrade=" + passingGrade + ", month=" + month + ", day=" + day + ", year=" + year + "]";
+		return "Batch [id=" + id + ", name=" + name + ", location=" + location + ", locationCategory="
+				+ locationCategory + ", goodGrade=" + goodGrade + ", passingGrade=" + passingGrade + ", startDate="
+				+ startDate + ", endDate=" + endDate + ", trainers=" + trainers + ", skill=" + skill + ", type=" + type
+				+ "]";
 	}
+
+
 
 	public static void main(String[] args) {
 		Date date = new Date();

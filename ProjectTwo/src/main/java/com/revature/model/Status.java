@@ -1,10 +1,14 @@
 package com.revature.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,7 +28,9 @@ public class Status {
 	@Column(name="type")
 	private String status;
 	
-
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="status")
+	public List<Trainee> trainees;
+	
 	public Status() {
 		super();
 	}
@@ -32,6 +38,13 @@ public class Status {
 	public Status(String status) {
 		super();
 		this.status = status;
+	}
+
+	public Status(int id, String status, List<Trainee> trainees) {
+		super();
+		this.id = id;
+		this.status = status;
+		this.trainees = trainees;
 	}
 
 	public int getId() {
@@ -50,10 +63,20 @@ public class Status {
 		this.status = status;
 	}
 
+	public List<Trainee> getTrainees() {
+		return trainees;
+	}
+
+	public void setTrainees(List<Trainee> trainees) {
+		this.trainees = trainees;
+	}
+
 	@Override
 	public String toString() {
-		return "Status [id=" + id + ", status=" + status + "]";
+		return "Status [id=" + id + ", status=" + status + ", trainees=" + trainees + "]";
 	}
+
+	
 	
 	
 	

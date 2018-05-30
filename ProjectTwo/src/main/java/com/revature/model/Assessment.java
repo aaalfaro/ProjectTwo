@@ -29,7 +29,7 @@ public class Assessment {
 	private String type;
 	
 	@Column(name="POINT")
-	private String point;
+	private String point = "0" ;
 	
 
 	public Assessment() {
