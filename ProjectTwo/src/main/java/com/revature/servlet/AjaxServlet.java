@@ -1,4 +1,4 @@
-package com.revature.servlets;
+package com.revature.servlet;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.servlets.AjaxDispatcher;
+import com.revature.servlet.AjaxDispatcher;
 
 public class AjaxServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

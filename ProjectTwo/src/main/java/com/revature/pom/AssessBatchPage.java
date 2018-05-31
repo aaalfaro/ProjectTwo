@@ -123,4 +123,41 @@ public class AssessBatchPage extends POM{
 	public WebElement getDeleteAssess(String arg1) {
 		return null;
 	}
+	public void createCategoryDropDown(String input) {
+		List<WebElement> listOfElements = driver.findElements(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/form/div[1]/div[1]/div/select/option"));
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/form/div[1]/div[1]/div/select"))));
+		Select select = new Select(driver.findElement(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/form/div[1]/div[1]/div/select")));
+		for(WebElement el : listOfElements) {
+			System.out.println("element text:" +el.getText());
+			System.out.println("Input :"+input);
+			if(el.getText().equals(input)) {
+				System.out.println("Matching Input :"+input);
+			wait.until(ExpectedConditions.visibilityOf(el));
+				select.selectByVisibleText(el.getText());
+				return;
+			}
+			
+		}
+		throw new IllegalArgumentException("Not a valid category");
+	} 
+	public void inputCreatePoint(String input) {
+		driver.findElement(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/form/div[1]/div[2]/div[1]/input")).sendKeys(input);
+	}
+	public void createTypeDropDown(String input) {
+		List<WebElement> listOfElements = driver.findElements(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/form/div[1]/div[2]/div[2]/select/option"));
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/form/div[1]/div[2]/div[2]/select"))));
+		Select select = new Select(driver.findElement(By.xpath("//*[@id=\"createAssessmentModal\"]/div/div/form/div[1]/div[2]/div[2]/select")));
+		for(WebElement el : listOfElements) {
+			System.out.println("element text:" +el.getText());
+			System.out.println("Input :"+input);
+			if(el.getText().equals(input)) {
+				System.out.println("Matching Input :"+input);
+			wait.until(ExpectedConditions.visibilityOf(el));
+				select.selectByVisibleText(el.getText());
+				return;
+			}
+			
+		}
+		throw new IllegalArgumentException("Not a valid category");
+	}
 }

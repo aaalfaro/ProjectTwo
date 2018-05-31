@@ -2,32 +2,52 @@
 <testng-results skipped="0" failed="1" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="14473" started-at="2018-05-30T01:18:23Z" finished-at="2018-05-30T01:18:38Z">
+  <suite name="Default suite" duration-ms="17126" started-at="2018-05-31T02:10:55Z" finished-at="2018-05-31T02:11:12Z">
     <groups>
       <group name="cucumber">
         <method signature="AbstractTestNGCucumberTests.feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.runners.TestNGRunner@239963d8]" name="feature" class="cucumber.api.testng.AbstractTestNGCucumberTests"/>
       </group> <!-- cucumber -->
     </groups>
-    <test name="Default test" duration-ms="14473" started-at="2018-05-30T01:18:23Z" finished-at="2018-05-30T01:18:38Z">
+    <test name="Default test" duration-ms="17126" started-at="2018-05-31T02:10:55Z" finished-at="2018-05-31T02:11:12Z">
       <class name="com.revature.runners.TestNGRunner">
-        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.revature.runners.TestNGRunner@239963d8]" name="setUpClass" is-config="true" duration-ms="188" started-at="2018-05-29T21:18:23Z" finished-at="2018-05-29T21:18:24Z">
+        <test-method status="PASS" signature="setUpClass()[pri:0, instance:com.revature.runners.TestNGRunner@239963d8]" name="setUpClass" is-config="true" duration-ms="203" started-at="2018-05-30T22:10:55Z" finished-at="2018-05-30T22:10:55Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpClass -->
-        <test-method status="FAIL" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.runners.TestNGRunner@239963d8]" name="feature" duration-ms="14216" started-at="2018-05-29T21:18:24Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-05-29T21:18:38Z">
+        <test-method status="FAIL" signature="feature(cucumber.api.testng.CucumberFeatureWrapper)[pri:0, instance:com.revature.runners.TestNGRunner@239963d8]" name="feature" duration-ms="16861" started-at="2018-05-30T22:10:55Z" description="Runs Cucumber Feature" data-provider="features" finished-at="2018-05-30T22:11:12Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[Testing insertion of elements on the assess batch page]]>
+                <![CDATA[Testing deletion of elements]]>
               </value>
             </param>
           </params>
           <exception class="cucumber.runtime.CucumberException">
             <message>
-              <![CDATA[java.lang.IllegalArgumentException: Not a valid month]]>
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="viewTraineeModal"]/div/div/div[2]/div[2]/div/table/tbody/tr[-1]/td[15]/a/span"}
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.8.1', revision: '6e95a6684b', time: '2017-12-01T18:33:54.468Z'
+System info: host: 'LAPTOP-V6K3QTEF', ip: '169.254.229.99', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\SCRUBL~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 66.0.3359.181, webStorageEnabled: true}
+Session ID: 3e9f50ba5fdf9c0971c008c59c6a4fd2
+*** Element info: {Using=xpath, value=//*[@id="viewTraineeModal"]/div/div/div[2]/div[2]/div/table/tbody/tr[-1]/td[15]/a/span}]]>
             </message>
             <full-stacktrace>
-              <![CDATA[cucumber.runtime.CucumberException: java.lang.IllegalArgumentException: Not a valid month
+              <![CDATA[cucumber.runtime.CucumberException: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="viewTraineeModal"]/div/div/div[2]/div[2]/div/table/tbody/tr[-1]/td[15]/a/span"}
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.8.1', revision: '6e95a6684b', time: '2017-12-01T18:33:54.468Z'
+System info: host: 'LAPTOP-V6K3QTEF', ip: '169.254.229.99', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\SCRUBL~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 66.0.3359.181, webStorageEnabled: true}
+Session ID: 3e9f50ba5fdf9c0971c008c59c6a4fd2
+*** Element info: {Using=xpath, value=//*[@id="viewTraineeModal"]/div/div/div[2]/div[2]/div/table/tbody/tr[-1]/td[15]/a/span}
 	at cucumber.api.testng.TestNGCucumberRunner.runCucumber(TestNGCucumberRunner.java:69)
 	at cucumber.api.testng.AbstractTestNGCucumberTests.feature(AbstractTestNGCucumberTests.java:21)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
@@ -54,17 +74,43 @@
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:114)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-Caused by: java.lang.IllegalArgumentException: Not a valid month
-	at com.revature.pom.ManageBatchPage.yearDropDown(ManageBatchPage.java:149)
-	at com.revature.StepImplementation.CaliberStepImpl.a_user_inserts_a_trainee(CaliberStepImpl.java:664)
-	at ✽.When a user inserts a trainee "183"(src/test/java/InsertingWithDb.feature:9)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//*[@id="viewTraineeModal"]/div/div/div[2]/div[2]/div/table/tbody/tr[-1]/td[15]/a/span"}
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.8.1', revision: '6e95a6684b', time: '2017-12-01T18:33:54.468Z'
+System info: host: 'LAPTOP-V6K3QTEF', ip: '169.254.229.99', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_161'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.38.552522 (437e6fbedfa876..., userDataDir: C:\Users\SCRUBL~1\AppData\L...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: false, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: false, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 66.0.3359.181, webStorageEnabled: true}
+Session ID: 3e9f50ba5fdf9c0971c008c59c6a4fd2
+*** Element info: {Using=xpath, value=//*[@id="viewTraineeModal"]/div/div/div[2]/div[2]/div/table/tbody/tr[-1]/td[15]/a/span}
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:214)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:166)
+	at org.openqa.selenium.remote.http.JsonHttpResponseCodec.reconstructValue(JsonHttpResponseCodec.java:40)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:80)
+	at org.openqa.selenium.remote.http.AbstractHttpResponseCodec.decode(AbstractHttpResponseCodec.java:44)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:164)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:601)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:371)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:473)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:361)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:363)
+	at com.revature.pom.ManageBatchPage.deleteBatch(ManageBatchPage.java:211)
+	at com.revature.StepImplementation.CaliberStepImpl.user_deletes_batch(CaliberStepImpl.java:725)
+	at ✽.When user deletes batch "182"(src/test/java/Delete.feature:8)
 ]]>
             </full-stacktrace>
           </exception> <!-- cucumber.runtime.CucumberException -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- feature -->
-        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.revature.runners.TestNGRunner@239963d8]" name="tearDownClass" is-config="true" duration-ms="7" started-at="2018-05-29T21:18:38Z" finished-at="2018-05-29T21:18:38Z">
+        <test-method status="PASS" signature="tearDownClass()[pri:0, instance:com.revature.runners.TestNGRunner@239963d8]" name="tearDownClass" is-config="true" duration-ms="15" started-at="2018-05-30T22:11:12Z" finished-at="2018-05-30T22:11:12Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownClass -->

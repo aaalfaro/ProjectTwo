@@ -5,9 +5,9 @@ Feature: Testing deletion of elements
     And navigates to caliber
 
   Scenario Outline: 
-    When user selects "<deleteButton>" from "<deleteButtonLocation>"
-    Then the "<element>" should be gone
+    When user deletes batch "<pk>"
+    Then batch should be delete "<pk>"
 
     Examples: 
-      | deleteButton | deleteButtonLocation | element |
-      | 1					   | deleteBatch          | batch   |
+      | pk  |
+      | 182 |

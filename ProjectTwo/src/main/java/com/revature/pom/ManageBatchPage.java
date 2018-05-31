@@ -185,7 +185,49 @@ public class ManageBatchPage extends POM{
 		return driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+locator+"]/td[13]/a"));
 	}
 
-	
+	public WebElement GetUrlTextBox() {
+		return driver.findElements(By.xpath("//*[@id=\"traineeName\"]")).get(1);
+	}
+
+	public int getTraineeRow(String name) {
+		wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr[1]/td"))));
+		List<WebElement> names = driver.findElements(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr[1]/td"));
+		for(int i = 0; i < names.size();i++) {
+			if(names.get(i).getText().equals(name)) {
+				return i+1;
+			}
+		}
+		return -1;
+	}
+
+	public void deleteTrainee(int traineeRow) {
+		driver.findElement(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr["+traineeRow+"]/td[15]/a/span")).click();
+	}
+	public WebElement deleteTraineeSubmit() {
+		return driver.findElement(By.xpath("//*[@id=\"deleteTraineeModal\"]/div/div/div[3]/input"));
+	}
+
+	public void deleteBatch(int traineeRow) {
+		driver.findElement(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr["+traineeRow+"]/td[15]/a/span")).click();
+	}
+
+	public WebElement deleteBatchSubmit() {
+		return driver.findElement(By.xpath("//*[@id=\"deleteBatchModal\"]/div/div/div[3]/input"));
+	}
+
+	public int getBatchRow(String name) {
+		wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr[1]"))));
+		List<WebElement> names = driver.findElements(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/*/td[1]"));
+		//*[@id="manage"]/div[2]/div/div/table/tbody/tr[1]/td[1]
+		//*[@id="manage"]/div[2]/div/div/table/tbody/tr[2]/td[1]
+		for(int i = 0; i < names.size();i++) {
+			System.out.println(names.get(i).getText());
+			if(names.get(i).getText().equals(name)) {
+				return i+1;
+			}
+		}
+		return -1;
+	}
 	}
 
 

@@ -38,7 +38,10 @@ public abstract class POM {
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("#"+locator))));
 		Select select = new Select(driver.findElement(By.cssSelector("#"+locator)));
 		for(WebElement el : listOfElements) {
+			System.out.println("element text:" +el.getText());
+			System.out.println("Input :"+input);
 			if(el.getText().equals(input)) {
+				System.out.println("Matching Input :"+input);
 			wait.until(ExpectedConditions.visibilityOf(el));
 				select.selectByVisibleText(el.getText());
 				return;
@@ -47,7 +50,8 @@ public abstract class POM {
 		}
 		throw new IllegalArgumentException("Not a valid month");
 		}
-	public void input(String input,String locator) {		
+	public void input(String input,String locator) throws InterruptedException {		
 		driver.findElement(By.xpath("//*[@id=\""+ locator +"\"]")).sendKeys(input);
+		Thread.sleep(250);
 	}
 }

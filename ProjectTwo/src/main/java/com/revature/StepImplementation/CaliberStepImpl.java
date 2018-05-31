@@ -601,29 +601,17 @@ public class CaliberStepImpl {
 	public void a_pdf_should_download() throws Throwable {
 	    assertTrue(report.wasPdfTestSuccessful());
 	}
-	
-	@When("^a user inserts an assessment$")
-	public void a_user_inserts_an_assessment(DataTable arg1) throws Throwable {
-		Map<String, String> map = arg1.asMap(String.class, String.class);
-		Assessment assessment = AssessmentService.getAssessment(Integer.parseInt(map.get("pk")));
-	    home.getAssessAnchor().click();
-	    assess = new AssessBatchPage(driver);
-	    assess.getCreateAssessButton().click();
-	    assess.DropDown(assessment.getCategory(), "category");
-	    assess.DropDown(assessment.getType(), "assessmentType");
-	    assess.input("80", "rawScore");
-	    assess.getSubAssessButton().click();
-	}
 	@When("^a user inserts an assessment \"([^\"]*)\"$")
 	public void a_user_inserts_an_assessment(String pk) throws Throwable {
 		Assessment assessment = AssessmentService.getAssessment(Integer.parseInt(pk));
 	    home.getAssessAnchor().click();
 	    assess = new AssessBatchPage(driver);
 	    assess.getCreateAssessButton().click();
-	    assess.DropDown(assessment.getCategory(), "category");
-	    assess.DropDown(assessment.getType(), "assessmentType");
-	    assess.input(assessment.getPoint(), "rawScore");
+	    assess.createCategoryDropDown(assessment.getCategory());
+	    assess.createTypeDropDown(assessment.getType());
+	    assess.inputCreatePoint(assessment.getPoint());
 	    assess.getSubAssessButton().click();
+	    
 	}
 	@Then("^a new assessment should be made$")
 	public void a_new_assessment_should_be_made() throws Throwable {
@@ -674,9 +662,11 @@ public class CaliberStepImpl {
 		manage.input(trainee.getMajor(), "traineeMajor");
 		manage.input(trainee.getRecruiter(), "traineeRecruiterName");
 		manage.input(trainee.getScreener(), "traineeTechScreenerName");
-		manage.getInputForTraineeName(1).sendKeys(trainee.getName());
+		manage.input(""+trainee.getCompletion(), "traineeProjectCompletion");
 		manage.DropDown(trainee.getStatus().getStatus(), "traineeStatus");
-		manage.getSubTraineeButton().click();
+		manage.GetUrlTextBox().sendKeys(trainee.getUrl());
+		manage.GetUrlTextBox().submit();
+		Thread.sleep(5000);
 	}
 
 	@Then("^a new trainee should be made$")
@@ -695,6 +685,52 @@ public class CaliberStepImpl {
 	@Then("^a week should be added$")
 	public void a_week_should_be_added() throws Throwable {
 	    assertTrue(true);
+	}
+	
+	@When("^user deletes trainee \"([^\"]*)\"$")
+	public void user_deletes_trainee(String arg1) throws Throwable {
+		home.getManageAnchor().click();
+		manage = new ManageBatchPage(driver);
+	   Trainee trainee = TraineeService.getTrainee(Integer.parseInt(arg1));
+		manage.yearDropDown("2016");
+		manage.getViewBatchButton("1").click();
+		manage.deleteTrainee(manage.getTraineeRow(trainee.getName()));
+		System.out.println("before delete");
+		wait.until(ExpectedConditions.elementToBeClickable(manage.deleteTraineeSubmit()));
+	    manage.deleteTraineeSubmit().click();
+	    Thread.sleep(500);
+	}
+
+	@Then("^trainee \"([^\"]*)\" should be gone$")
+	public void trainee_should_be_gone(String arg1) throws Throwable {
+		assertTrue(true);
+	}
+
+	@When("^user deletes assessment \"([^\"]*)\"$")
+	public void user_deletes_assessment(String arg1) throws Throwable {
+	    
+	}
+
+	@Then("^assessment \"([^\"]*)\" should be gone$")
+	public void assessment_should_be_gone(String arg1) throws Throwable {
+		assertTrue(true);
+	}
+
+	@When("^user deletes batch \"([^\"]*)\"$")
+	public void user_deletes_batch(String arg1) throws Throwable {
+		home.getManageAnchor().click();
+		manage = new ManageBatchPage(driver);
+	    Batch batch = BatchService.getBatch(Integer.parseInt(arg1));
+		manage.yearDropDown("2016");
+		manage.deleteBatch(manage.getBatchRow(batch.getName()));
+		wait.until(ExpectedConditions.elementToBeClickable(manage.deleteBatchSubmit()));
+		manage.deleteBatchSubmit().click();
+	    Thread.sleep(500);
+	}
+
+	@Then("^batch should be delete \"([^\"]*)\"$")
+	public void batch_should_be_delete(String arg1) throws Throwable {
+		assertTrue(true);
 	}
 
 	@After
