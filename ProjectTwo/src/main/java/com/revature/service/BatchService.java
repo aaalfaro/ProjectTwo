@@ -11,7 +11,7 @@ public class BatchService {
 	
 	public BatchService() {}
 	
-	public static List<Batch> Batch() {
+	public static List<Batch> getBatch() {
 		return dao.getBatch();
 	}
 	
