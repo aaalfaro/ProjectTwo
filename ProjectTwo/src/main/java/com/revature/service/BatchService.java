@@ -11,12 +11,16 @@ public class BatchService {
 	
 	public BatchService() {}
 	
-	public static List<Batch> getBatch() {
+	public static List<Batch> Batch() {
 		return dao.getBatch();
 	}
 	
 	public static boolean addBatch(Batch batch) {
 		return dao.addBatch(batch);
+	}
+	
+	public static Batch getBatch(int id) {
+		return dao.getBatch(id);
 	}
 	
 	//For AJAX
