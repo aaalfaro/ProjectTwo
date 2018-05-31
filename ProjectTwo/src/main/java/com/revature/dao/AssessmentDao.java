@@ -9,5 +9,4 @@ public interface AssessmentDao {
 	List<String> getType();
 	boolean insertAssessment(Assessment a);
 	Assessment getAssessment(int id);
-
 }

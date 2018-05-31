@@ -39,8 +39,12 @@ public class Trainer {
 		super();
 		this.name = name;
 	}
-	
-	
+
+	public Trainer(int id, String name) {
+		super();
+		this.id = id;
+		this.name = name;
+	}
 
 	public Trainer(int id, String name, Batch batch) {
 		super();

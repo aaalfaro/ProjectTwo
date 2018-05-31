@@ -19,5 +19,9 @@ public class SkillTypeService {
 	public static boolean addSkill(SkillType type) {
 		return dao.addSkill(type);
 	}
+	
+	public static List<SkillType> AjaxTypes(){
+		return dao.getTypesAjax();
+	}
 
 }

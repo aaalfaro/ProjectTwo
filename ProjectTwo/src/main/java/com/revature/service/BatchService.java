@@ -19,7 +19,9 @@ public class BatchService {
 		return dao.addBatch(batch);
 	}
 	
-	public static Batch getBatch(int id) {
-		return dao.getBatch(id);
+	//For AJAX
+	public static List<Batch> allBatch(){
+		return dao.getBatchForAjax();
 	}
+
 }

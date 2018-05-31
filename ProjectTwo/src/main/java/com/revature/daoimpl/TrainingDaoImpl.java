@@ -2,11 +2,16 @@ package com.revature.daoimpl;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.revature.dao.TrainingTypeDao;
+import com.revature.model.Trainee;
 import com.revature.model.TrainingType;
 import com.revature.utility.HibernateUtility;
 
@@ -59,5 +64,28 @@ public class TrainingDaoImpl implements TrainingTypeDao{
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public List<TrainingType> getTypesAjax() {
+		Session session = null;
+		List<TrainingType> types;
+		try {
+			session = HibernateUtility.getSessionFactory().openSession();
+			CriteriaBuilder build = session.getCriteriaBuilder();
+			CriteriaQuery<TrainingType> criteria = build.createQuery(TrainingType.class);
+			Root<TrainingType>training = criteria.from(TrainingType.class);
+			criteria.multiselect(training.get("type"));
+			types = session.createQuery(criteria).getResultList();
+			return types;
+		}catch (HibernateException hbe) {
+			hbe.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("Session successfully closed: " + !session.isOpen());
+			}
+		}
+		return null;
 	}
 }

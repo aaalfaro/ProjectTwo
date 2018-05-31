@@ -1,4 +1,4 @@
-package com.revature.servlet;
+package com.revature.servlets;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,17 +19,17 @@ public class AjaxDispatcher {
 	public static Object process(HttpServletRequest request, HttpServletResponse response) {
 		switch(request.getRequestURI()) {
 			case "/ProjectTwo/getTrainers.ajax":
-				return TrainerService.getAllTrainers();
+				return TrainerService.AllTrainers();
 			case "/ProjectTwo/getTrainee.ajax":
-				return TraineeService.getAllTrainee();
+				return TraineeService.AjaxTrainee();
 			case "/ProjectTwo/getBatch.ajax":
-				return BatchService.Batch();
+				return BatchService.allBatch();
 			case "/ProjectTwo/getSkill.ajax":
-				return SkillTypeService.getTypes();
+				return SkillTypeService.AjaxTypes();
 			case "/ProjectTwo/getTrainingType.ajax":
-				return TrainingTypeService.getAllTypes();
+				return TrainingTypeService.AjaxType();
 			case "/ProjectTwo/getStatus.ajax":
-				return StatusService.getEverything();
+				return StatusService.AjaxStatus();
 			case "/ProjectTwo/getAssessmentCategory.ajax":
 				return AssessmentService.getCategories();
 			case "/ProjectTwo/getAssessmentTypes.ajax":

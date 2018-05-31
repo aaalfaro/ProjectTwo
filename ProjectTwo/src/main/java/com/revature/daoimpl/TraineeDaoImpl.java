@@ -2,6 +2,10 @@ package com.revature.daoimpl;
 
 import java.util.List;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -78,6 +82,32 @@ public class TraineeDaoImpl implements TraineeDao {
 			}
 		}
 		return false;
+	}
+
+	@Override
+	public List<Trainee> AjaxTrainee() {
+		Session session = null;
+		List<Trainee> trainees;
+		try {
+			session = HibernateUtility.getSessionFactory().openSession();
+			CriteriaBuilder build = session.getCriteriaBuilder();
+			CriteriaQuery<Trainee> criteria = build.createQuery(Trainee.class);
+			Root<Trainee>trainee = criteria.from(Trainee.class);
+
+			criteria.multiselect(trainee.get("name"),trainee.get("email"),trainee.get("skype"),trainee.get("phone"),trainee.get("college")
+					,trainee.get("degree"),trainee.get("major"),trainee.get("recruiter"),trainee.get("screener"),trainee.get("completion"),
+					trainee.get("url"));
+			trainees = session.createQuery(criteria).getResultList();
+			return trainees;
+		}catch (HibernateException hbe) {
+			hbe.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+				System.out.println("Session successfully closed: " + !session.isOpen());
+			}
+		}
+		return null;
 	}
 
 }

@@ -82,6 +82,19 @@ public class Batch {
 		this.skill = skill;
 		this.type = type;
 	}
+	
+	public Batch(String name, String location, String locationCategory, int goodGrade, int passingGrade,
+			String startDate, String endDate) {
+		super();
+		this.name = name;
+		this.location = location;
+		this.locationCategory = locationCategory;
+		this.goodGrade = goodGrade;
+		this.passingGrade = passingGrade;
+		this.startDate = startDate;
+		this.endDate = endDate;
+	}
+
 
 
 	public int getId() {

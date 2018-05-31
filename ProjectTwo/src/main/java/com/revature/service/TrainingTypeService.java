@@ -18,5 +18,8 @@ public class TrainingTypeService {
 	public static List<TrainingType> getAllTypes(){
 		return dao.getTypes();
 	}
-
+	
+	public static List<TrainingType> AjaxType(){
+		return dao.getTypesAjax();
+	}
 }

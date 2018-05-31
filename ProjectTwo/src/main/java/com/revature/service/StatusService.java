@@ -17,4 +17,8 @@ public class StatusService {
 	public static List<Status> getEverything(){
 		return dao.getEverything();
 	}
+	
+	public static List<Status> AjaxStatus(){
+		return dao.getEverythingAjax();
+	}
 }

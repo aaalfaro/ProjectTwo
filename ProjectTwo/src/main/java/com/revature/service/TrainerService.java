@@ -23,4 +23,10 @@ public class TrainerService {
 		return dao.insertTrainer(trainer);
 	}
 	
+	//For AJAX
+	public static List<Trainer> AllTrainers(){
+		return dao.getTrainerNames();
+	}
+	
+	
 }

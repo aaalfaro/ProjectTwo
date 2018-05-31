@@ -22,4 +22,8 @@ public class TraineeService {
 	public static List<Trainee> getAllTrainee(){
 		return dao.getAllTrainees();
 	}
+	
+	public static List<Trainee> AjaxTrainee(){
+		return dao.AjaxTrainee();
+	}
 }
