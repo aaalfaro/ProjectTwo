@@ -20,7 +20,7 @@ var Ajax = function(){
     
     function ajax(r){
         var promise = new Promise(function(resolve, reject){
-            http.get('http://localhost:8080/ProjectTwo/'+r+'.ajax', (res) => {
+            http.get('http://localhost:8090/ProjectTwo/'+r+'.ajax', (res) => {
             const { statusCode } = res;
             const contentType = res.headers['content-type'];
 
