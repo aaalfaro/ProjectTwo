@@ -34,24 +34,27 @@ public abstract class POM {
 		return driver.findElement(By.xpath("/html/body/div/ui-view/nav/div/ul[2]/li[4]/a"));
 	}
 	public void DropDown(String input,String locator) {					
+
+		if(input != null && !input.equals("0")) {
 		List<WebElement> listOfElements = driver.findElements(By.xpath("//*[@id=\""+locator+"\"]/option"));
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.cssSelector("#"+locator))));
 		Select select = new Select(driver.findElement(By.cssSelector("#"+locator)));
 		for(WebElement el : listOfElements) {
-			System.out.println("element text:" +el.getText());
-			System.out.println("Input :"+input);
 			if(el.getText().equals(input)) {
-				System.out.println("Matching Input :"+input);
 			wait.until(ExpectedConditions.visibilityOf(el));
 				select.selectByVisibleText(el.getText());
 				return;
 			}
-			
+		}
 		}
 		throw new IllegalArgumentException("Not a valid month");
 		}
 	public void input(String input,String locator) throws InterruptedException {		
+		if(input != null && !input.equals("-1")) {
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\""+ locator +"\"]")));
+		driver.findElement(By.xpath("//*[@id=\""+ locator +"\"]")).clear();
 		driver.findElement(By.xpath("//*[@id=\""+ locator +"\"]")).sendKeys(input);
 		Thread.sleep(250);
 	}
+}
 }

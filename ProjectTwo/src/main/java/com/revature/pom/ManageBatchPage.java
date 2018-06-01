@@ -3,6 +3,7 @@ package com.revature.pom;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -122,11 +123,14 @@ public class ManageBatchPage extends POM{
 		return driver.findElement(By.cssSelector("#createBatchModal > div > div > div.modal-footer > input"));
 	}
 
-	public WebElement getStartDateInput() {
+	public WebElement getStartDateInput() throws InterruptedException {
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id=\"start-date\"]/input"))));
+		Thread.sleep(200);
 		return driver.findElement(By.xpath("//*[@id=\"start-date\"]/input"));
 	}
 
 	public WebElement getEndDateInput() {
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id=\"end-date\"]/input"))));
 		return driver.findElement(By.xpath("//*[@id=\"end-date\"]/input"));
 	}
 
@@ -150,6 +154,7 @@ public class ManageBatchPage extends POM{
 		}
 	public void selectLocation(String input, String locator) {
 		String path;
+		if(input != null && locator != null) {
 		switch(locator) {
 		case"NY": path = "//*[@id=\"location\"]/optgroup[1]/option";break;
 		case"VA": path = "//*[@id=\"location\"]/optgroup[2]/option";break;
@@ -168,7 +173,7 @@ public class ManageBatchPage extends POM{
 		}
 		throw new IllegalArgumentException("Not a valid month");
 		}
-
+	}
 	public WebElement getBatchUpdateSub() {
 		return driver.findElement(By.xpath("//*[@id=\"createBatchModal\"]/div/div/div[3]/input"));
 	}
@@ -218,15 +223,25 @@ public class ManageBatchPage extends POM{
 	public int getBatchRow(String name) {
 		wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr[1]"))));
 		List<WebElement> names = driver.findElements(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/*/td[1]"));
-		//*[@id="manage"]/div[2]/div/div/table/tbody/tr[1]/td[1]
-		//*[@id="manage"]/div[2]/div/div/table/tbody/tr[2]/td[1]
 		for(int i = 0; i < names.size();i++) {
-			System.out.println(names.get(i).getText());
 			if(names.get(i).getText().equals(name)) {
 				return i+1;
 			}
 		}
 		return -1;
+	}
+
+	public void batchAction(String action, int traineeRow) {
+		String actionCol = "";
+		switch(action) {
+		case "update": actionCol = "12";break;
+		case "view": actionCol = "11";break;
+		case "delete": actionCol = "13";break;
+			
+		}
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+traineeRow+"]/td["+actionCol+"]/a")));
+		driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+traineeRow+"]/td["+actionCol+"]/a")).click();
+		
 	}
 	}
 

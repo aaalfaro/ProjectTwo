@@ -443,10 +443,10 @@ public class CaliberStepImpl {
 		case "completion":
 			manage.input(arg1, "traineeProjectCompletion");
 			break;
-		case"updatePoint":
+		case "updatePoint":
 			assess.updateDropDown(arg1, "rawScore");
 			break;
-		case"searchTextBox":
+		case "searchTextBox":
 			home.getReportAnchor().click();
 			report = new ReportPage(driver);
 			report.input(arg1, arg2);
@@ -524,7 +524,7 @@ public class CaliberStepImpl {
 			report.dropDownOptions(arg1, "pdf");
 			break;
 		case "weekTab":
-			assess= new AssessBatchPage(driver);
+			assess = new AssessBatchPage(driver);
 			assess.weekTab(arg1);
 		case "updateAssess":
 			home.getAssessAnchor().click();
@@ -556,15 +556,15 @@ public class CaliberStepImpl {
 			manage = new ManageBatchPage(driver);
 			manage.yearDropDown("2016");
 			manage.getDeleteBatchButton(arg1).click();
-			break;	
+			break;
 		default:
 			throw new IllegalArgumentException();
 		}
 	}
-	
+
 	@Then("^the \"([^\"]*)\" should be gone$")
 	public void the_should_be_gone(String arg1) throws Throwable {
-	    assertTrue(true);
+		assertTrue(true);
 	}
 
 	@Then("^new assessment should be created$")
@@ -587,61 +587,66 @@ public class CaliberStepImpl {
 	public void should_be_displayed(String arg1) throws Throwable {
 		assertTrue(true);
 	}
+
 	@Then("^the \"([^\"]*)\" should displayed$")
 	public void the_should_displayed(String arg1) throws Throwable {
-	  assertTrue(true);
+		assertTrue(true);
 	}
+
 	@When("^user clicks a pdf button$")
 	public void user_clicks_a_pdf_button() throws Throwable {
 		home.getReportAnchor().click();
 		report = new ReportPage(driver);
 		report.TestPdfs();
 	}
+
 	@Then("^a pdf should download$")
 	public void a_pdf_should_download() throws Throwable {
-	    assertTrue(report.wasPdfTestSuccessful());
+		assertTrue(report.wasPdfTestSuccessful());
 	}
+
 	@When("^a user inserts an assessment \"([^\"]*)\"$")
 	public void a_user_inserts_an_assessment(String pk) throws Throwable {
 		Assessment assessment = AssessmentService.getAssessment(Integer.parseInt(pk));
-	    home.getAssessAnchor().click();
-	    assess = new AssessBatchPage(driver);
-	    assess.getCreateAssessButton().click();
-	    assess.createCategoryDropDown(assessment.getCategory());
-	    assess.createTypeDropDown(assessment.getType());
-	    assess.inputCreatePoint(assessment.getPoint());
-	    assess.getSubAssessButton().click();
-	    
+		home.getAssessAnchor().click();
+		assess = new AssessBatchPage(driver);
+		assess.getCreateAssessButton().click();
+		assess.createCategoryDropDown(assessment.getCategory());
+		assess.createTypeDropDown(assessment.getType());
+		assess.inputCreatePoint(assessment.getPoint());
+		assess.getSubAssessButton().click();
+
 	}
+
 	@Then("^a new assessment should be made$")
 	public void a_new_assessment_should_be_made() throws Throwable {
-	    assertTrue(true);
+		assertTrue(true);
 	}
+
 	@When("^a user inserts a batch \"([^\"]*)\"$")
 	public void a_user_inserts_a_batch(String arg1) throws Throwable {
-	   Batch batch = BatchService.getBatch(Integer.parseInt(arg1));
-	   home.getManageAnchor().click();
-	   System.out.println("here");
-	   manage = new ManageBatchPage(driver);
-	   manage.getCreateBatchButton().click();
-	    manage.input(batch.getName(), "trainingName");
+		Batch batch = BatchService.getBatch(Integer.parseInt(arg1));
+		home.getManageAnchor().click();
+		manage = new ManageBatchPage(driver);
+		manage.getCreateBatchButton().click();
+		manage.input(batch.getName(), "trainingName");
 		manage.DropDown(batch.getType().getType(), "trainingType");
 		manage.DropDown(batch.getSkill().getType(), "skillType");
-		manage.selectLocation(batch.getLocation(),batch.getLocationCategory() );
+		manage.selectLocation(batch.getLocation(), batch.getLocationCategory());
 		manage.DropDown(batch.getTrainers().get(0).getName(), "trainer");
 		manage.DropDown(batch.getTrainers().get(1).getName(), "co-trainer");
-		String start = ""+batch.getStartDate();
-		String end = ""+batch.getEndDate();
+		String start = "" + batch.getStartDate();
+		String end = "" + batch.getEndDate();
 		manage.getStartDateInput().sendKeys(start);
 		manage.getEndDateInput().sendKeys(end);
-		manage.input(""+batch.getGoodGrade(),"goodGrade");
-		manage.input(""+batch.getPassingGrade(),"borderlineGrade");
+		manage.input("" + batch.getGoodGrade(), "goodGrade");
+		manage.input("" + batch.getPassingGrade(), "borderlineGrade");
 		manage.getSubCreateBatchButton().click();
 	}
 
 	@Then("^a new batch should be made$")
 	public void a_new_batch_should_be_made() throws Throwable {
-	    assertTrue(true);
+		assertTrue(true);
 	}
 
 	@When("^a user inserts a trainee \"([^\"]*)\"$")
@@ -662,7 +667,7 @@ public class CaliberStepImpl {
 		manage.input(trainee.getMajor(), "traineeMajor");
 		manage.input(trainee.getRecruiter(), "traineeRecruiterName");
 		manage.input(trainee.getScreener(), "traineeTechScreenerName");
-		manage.input(""+trainee.getCompletion(), "traineeProjectCompletion");
+		manage.input("" + trainee.getCompletion(), "traineeProjectCompletion");
 		manage.DropDown(trainee.getStatus().getStatus(), "traineeStatus");
 		manage.GetUrlTextBox().sendKeys(trainee.getUrl());
 		manage.GetUrlTextBox().submit();
@@ -671,34 +676,34 @@ public class CaliberStepImpl {
 
 	@Then("^a new trainee should be made$")
 	public void a_new_trainee_should_be_made() throws Throwable {
-	    assertTrue(true);
+		assertTrue(true);
 	}
-	
+
 	@When("^a user clicks the add week button$")
 	public void a_user_clicks_the_add_week_button() throws Throwable {
-	    home.getAssessAnchor().click();
-	    assess = new AssessBatchPage(driver);
-	    assess.getCreateWeekButton().click();
-	    assess.getSubCreateWeekButton().click();
+		home.getAssessAnchor().click();
+		assess = new AssessBatchPage(driver);
+		assess.getCreateWeekButton().click();
+		assess.getSubCreateWeekButton().click();
 	}
 
 	@Then("^a week should be added$")
 	public void a_week_should_be_added() throws Throwable {
-	    assertTrue(true);
+		assertTrue(true);
 	}
-	
+
 	@When("^user deletes trainee \"([^\"]*)\"$")
 	public void user_deletes_trainee(String arg1) throws Throwable {
 		home.getManageAnchor().click();
 		manage = new ManageBatchPage(driver);
-	   Trainee trainee = TraineeService.getTrainee(Integer.parseInt(arg1));
+		Trainee trainee = TraineeService.getTrainee(Integer.parseInt(arg1));
 		manage.yearDropDown("2016");
 		manage.getViewBatchButton("1").click();
 		manage.deleteTrainee(manage.getTraineeRow(trainee.getName()));
 		System.out.println("before delete");
 		wait.until(ExpectedConditions.elementToBeClickable(manage.deleteTraineeSubmit()));
-	    manage.deleteTraineeSubmit().click();
-	    Thread.sleep(500);
+		manage.deleteTraineeSubmit().click();
+		Thread.sleep(500);
 	}
 
 	@Then("^trainee \"([^\"]*)\" should be gone$")
@@ -708,7 +713,7 @@ public class CaliberStepImpl {
 
 	@When("^user deletes assessment \"([^\"]*)\"$")
 	public void user_deletes_assessment(String arg1) throws Throwable {
-	    
+
 	}
 
 	@Then("^assessment \"([^\"]*)\" should be gone$")
@@ -720,16 +725,78 @@ public class CaliberStepImpl {
 	public void user_deletes_batch(String arg1) throws Throwable {
 		home.getManageAnchor().click();
 		manage = new ManageBatchPage(driver);
-	    Batch batch = BatchService.getBatch(Integer.parseInt(arg1));
+		Batch batch = BatchService.getBatch(Integer.parseInt(arg1));
 		manage.yearDropDown("2016");
 		manage.deleteBatch(manage.getBatchRow(batch.getName()));
 		wait.until(ExpectedConditions.elementToBeClickable(manage.deleteBatchSubmit()));
 		manage.deleteBatchSubmit().click();
-	    Thread.sleep(500);
+		Thread.sleep(500);
 	}
 
 	@Then("^batch should be delete \"([^\"]*)\"$")
 	public void batch_should_be_delete(String arg1) throws Throwable {
+		assertTrue(true);
+	}
+
+	@When("^a user updates batch \"([^\"]*)\" with \"([^\"]*)\"$")
+	public void a_user_updates_batch_with(String arg1, String arg2) throws Throwable {
+		home.getManageAnchor().click();
+		Batch oldBatch = BatchService.getBatch(Integer.parseInt(arg1));
+		Batch newBatch = BatchService.getBatch(Integer.parseInt(arg2));
+		manage = new ManageBatchPage(driver);
+		manage.yearDropDown("2016");
+		manage.batchAction("update", manage.getBatchRow(oldBatch.getName()));
+		manage.input(newBatch.getName(), "trainingName");
+		if(newBatch.getType() != null)
+			manage.DropDown(newBatch.getType().getType(), "trainingType");
+		if(newBatch.getSkill() != null)
+			manage.DropDown(newBatch.getSkill().getType(), "skillType");
+		manage.selectLocation(newBatch.getLocation(), newBatch.getLocationCategory());
+		if(!newBatch.getTrainers().isEmpty()) {
+		if(newBatch.getTrainers().size() > 0)
+			manage.DropDown(newBatch.getTrainers().get(0).getName(), "trainer");
+		if(newBatch.getTrainers().size() > 1)	
+			manage.DropDown(newBatch.getTrainers().get(1).getName(), "co-trainer");
+		}
+		String start = "" + newBatch.getStartDate();
+		String end = "" + newBatch.getEndDate();
+		System.out.println(newBatch.getStartDate());
+		if(newBatch.getStartDate() != null){
+			System.out.println(start);
+			manage.getStartDateInput().sendKeys(start);
+		}
+		System.out.println(end);
+		if(!end.equals(null))
+			manage.getEndDateInput().sendKeys(end);	
+		manage.input("" + newBatch.getGoodGrade(), "goodGrade");
+		manage.input("" + newBatch.getPassingGrade(), "borderlineGrade");	
+		manage.getBatchUpdateSub().click();
+		Thread.sleep(10000);	
+	}
+
+	@Then("^then batch\"([^\"]*)\" should be changed$")
+	public void then_batch_should_be_changed(String arg1) throws Throwable {
+		assertTrue(true);
+	}
+
+	@When("^a user updates an assessment \"([^\"]*)\" with \"([^\"]*)\"$")
+	public void a_user_updates_an_assessment_with(String arg1, String arg2) throws Throwable {
+		
+	}
+
+	@Then("^then assessment\"([^\"]*)\" should be changed$")
+	public void then_assessment_should_be_changed(String arg1) throws Throwable {
+		// Write code here that turns the phrase above into concrete actions
+		assertTrue(true);
+	}
+
+	@When("^a user updates trainee \"([^\"]*)\" with \"([^\"]*)\"$")
+	public void a_user_updates_trainee_with(String arg1, String arg2) throws Throwable {
+	
+	}
+
+	@Then("^then trainee\"([^\"]*)\" should be changed$")
+	public void then_trainee_should_be_changed(String arg1) throws Throwable {
 		assertTrue(true);
 	}
 

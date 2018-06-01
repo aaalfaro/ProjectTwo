@@ -9,7 +9,8 @@ public class Chrome implements MyDriver{
 
 	@Override
 	public WebDriver getDriver() {
-		File file = new File("C:/Users/Administrator/.jenkins/workspace/ProjectTwo/src/main/resources/chromedriver.exe");
+		//C:/Users/Administrator/.jenkins/workspace/ProjectTwo/src/main/resources/chromedriver.exe
+		File file = new File("src/main/resources/chromedriver.exe");
 		System.setProperty("webdriver.chrome.driver",file.getAbsolutePath());
 		return new ChromeDriver();
 	}
