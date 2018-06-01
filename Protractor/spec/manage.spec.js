@@ -8,7 +8,7 @@ browser.driver.controlFlow().execute = function() {
 
   // queue 100ms wait
   origFn.call(browser.driver.controlFlow(), function() {
-    return protractor.promise.delayed(20);
+    return protractor.promise.delayed(25);
   });
 
   return origFn.apply(browser.driver.controlFlow(), args);
@@ -19,15 +19,17 @@ describe("Testing manage page", ()=>{
     let manage = require("../src/ManageBatch.js");
     var ajax = require("../Ajax.js");
 
-     var trainers = ajax.getTrainers();
+    var trainers = ajax.getTrainers();
     var batch  = ajax.getBatch();
     var training = ajax.getTrainingTypes();
     var skill = ajax.getSkillTypes();
+    var trainees = ajax.getTrainee();
 
-     trainers.then((val)=> trainers = val);
+    trainers.then((val)=> trainers = val);
     batch.then((val)=> batch = val);
     skill.then((val)=> skill = val);
     training.then((val)=>training = val);
+    trainees.then((val)=> trainees = val);
 
     describe("Just making sure we are at the correct page", ()=>{
         it("user should be at the manage page",()=>{
@@ -49,8 +51,8 @@ describe("Testing manage page", ()=>{
             newBatch = manage.createNewBatchButton().click();
         })
         it("user inputs information about the new batch",()=>{
-            manage.insertTrainingName().sendKeys(batch[0].name);
-            expect(manage.insertTrainingName().getAttribute('value')).toBe(batch[0].name);
+            manage.insertTrainingName().sendKeys(batch[1].name);
+            expect(manage.insertTrainingName().getAttribute('value')).toBe(batch[1].name);
         })
 
         it("user selects training type",()=>{
@@ -58,12 +60,9 @@ describe("Testing manage page", ()=>{
             let count = 0;
             select.all(by.tagName('option')).then(function(elements){
                 for(let option of elements){
-                    if( count !== 0){
-                        expect(option.getText()).toBe(training[count-1].type);
-                        option.click();
-                    }
-                    count++;
+                    option.click(); 
                 }
+                elements[1].click();
             })
         })
         it("user selects skill type",()=>{
@@ -81,7 +80,7 @@ describe("Testing manage page", ()=>{
         })
         it("user selects a location",()=>{
             let select = manage.insertLocation();
-            let count = 1;
+            let count = 2;
             select.all(by.tagName('optgroup')).then(function(elements){
                 for(let optgroup of elements){
                     optgroup.all(by.tagName('option')).then(function(element){
@@ -120,26 +119,28 @@ describe("Testing manage page", ()=>{
 
         it("user selects a start date",()=>{
             let select = manage.insertStartDate();
-            select.sendKeys(batch[0].startDate);
+            select.sendKeys(batch[1].startDate);
             // expect(select.getAttribute('value')).toBeCloseTo(batch[0].startDate);
-            
         })
 
         it("user selects an end date",()=>{
             let select = manage.insertEndDate();
-            select.sendKeys(batch[0].endDate);
-            // expect(select.getText()).toBe(batch[0].endDate);
+            select.sendKeys(batch[1].endDate);
+            // expect(select.getAttribute('value')).toBe(batch[0].endDate);
         })
 
         it("user selects a good grade",()=>{
             let select = manage.insertGoodGrade();
-            select.sendKeys(batch[0].goodGrade.toString());
-            expect(select.getAttribute('value')).toBe(batch[0].goodGrade.toString());
+            select.sendKeys(batch[1].goodGrade.toString());
+            expect(select.getAttribute('value')).toBe(batch[1].goodGrade.toString());
         })
         
-        it("user clicks the save button",()=>{
+        it("user selects a passing grade",()=>{
             let select= manage.insertPassingGrade();
-            select.sendKeys(batch[0].passingGrade.toString());
+            select.clear().then(function(){
+                select.sendKeys(batch[1].passingGrade.toString());
+            expect(select.getAttribute('value')).toBe(batch[1].passingGrade.toString());
+            })
         })
         it("user saves the batch",()=>{
             let button = manage.saveButton();
@@ -147,8 +148,8 @@ describe("Testing manage page", ()=>{
         })
     })
     describe("A user modifies a batch",()=>{
-        it("clicks on add ",()=>{
-           let batchRow =  manage.addTrainee();
+        it("clicks on add trainee",()=>{
+           let batchRow =  manage.ViewTrainees();
            let lastRow;
            batchRow.all(by.tagName("tr")).then(function(rows){
                 lastRow = rows[rows.length -1];
@@ -164,6 +165,111 @@ describe("Testing manage page", ()=>{
                 })
            })
 
+        })
+        it("user clicks button to add a trainee",()=>{
+            let add = manage.addTrainee();
+            add.click();
+            let header = element(by.css("#traineeModalLabel"));
+            expect(header.getText()).toBe("View/Add Trainees");
+        })
+        it("user adds trainee name", ()=>{
+            manage.TraineeName().sendKeys(trainees[0].name);
+            expect(manage.TraineeName().getAttribute('value')).toBe(trainees[0].name);
+        })
+        it("user enters an email address",()=>{
+            manage.TraineeEmail().sendKeys(trainees[0].email);
+            expect(manage.TraineeEmail().getAttribute('value')).toBe(trainees[0].email);
+        })
+        it("user enters skype ID",()=>{
+            manage.TraineeSkype().sendKeys(trainees[0].skype);
+            expect(manage.TraineeSkype().getAttribute('value')).toBe(trainees[0].skype);
+        })
+        it("user eneters a phone number",()=>{
+            manage.TraineePhone().sendKeys(trainees[0].phone);
+            expect(manage.TraineePhone().getAttribute('value')).toBe(trainees[0].phone);
+        })
+        it("user enters college name",()=>{
+            manage.TraineeCollege().sendKeys(trainees[0].college);
+            expect(manage.TraineeCollege().getAttribute('value')).toBe(trainees[0].college);
+        })
+        it("user enters degree",()=>{
+            manage.TraineeDegree().sendKeys(trainees[0].degree);
+            expect(manage.TraineeDegree().getAttribute('value')).toBe(trainees[0].degree);
+        })
+        it("user enters major",()=>{
+            manage.TraineeMajor().sendKeys(trainees[0].major);
+            expect(manage.TraineeMajor().getAttribute('value')).toBe(trainees[0].major);
+        })
+        it("user enters recuiter name",()=>{
+            manage.TraineeRecruiter().sendKeys(trainees[0].recruiter);
+            expect(manage.TraineeRecruiter().getAttribute('value')).toBe(trainees[0].recruiter);
+        })
+        it("user enters tech screener name",()=>{
+            manage.TraineeScreener().sendKeys(trainees[0].screener);
+            expect(manage.TraineeScreener().getAttribute('value')).toBe(trainees[0].screener);
+        })
+        it("user enters project completion",()=>{
+            manage.TraineeCompletion().sendKeys(trainees[0].completion.toString());
+            expect(manage.TraineeCompletion().getAttribute('value')).toBe(trainees[0].completion.toString());
+        })
+        it("user enter profile URL",()=>{
+            manage.TraineeURL().sendKeys(trainees[0].url);
+            expect(manage.TraineeURL().getAttribute('value')).toBe(trainees[0].url);
+        })
+        it("cycle through status",()=>{
+            let status = manage.TraineeStatus();
+            status.all(by.tagName("option")).then(function(elements){
+                for(let option of elements){
+                    option.click();
+                }
+                elements[3].click();
+            })
+        })
+        it("user saves trainee",()=>{
+            manage.saveTrainee().click();
+        })
+        it("user edits trainee information",()=>{
+            let table = manage.traineeTable();
+            let recruiter = trainees[0].recruiter.substring(0,4);
+            let last;
+            table.all(by.tagName("tr")).then(function(rows){
+                last = rows[rows.length-1];
+                last.all(by.tagName("td")).then(function(cols){
+                    cols[13].element(by.tagName("a")).click();
+                })  
+            })
+            manage.TraineeRecruiter().clear().then(function(){
+                manage.TraineeRecruiter().sendKeys(recruiter);
+            expect(manage.TraineeRecruiter().getAttribute('value')).toBe(recruiter);
+            })
+            manage.updateTrainee();
+        })
+        it("user clicks on active button",()=>{
+            manage.traineeActiveButton().click();
+            manage.traineeUnactiveButton();
+            manage.closeTrainee();
+        })
+        it("user clicks edit batch button",()=>{
+            let batchRow =  manage.ViewTrainees();
+           let lastRow;
+           batchRow.all(by.tagName("tr")).then(function(rows){
+                lastRow = rows[rows.length -1];
+                lastRow.all(by.tagName("td")).then(function(row){
+                    row[11].element(by.tagName("a")).click()
+                })
+           })
+        })
+        it("user changes skill",()=>{
+            let skill = manage.insertSkillType();
+            skill.all(by.tagName("option")).then(function(option){
+                option[8].click();
+            })
+            manage.updateBatch();
+        })
+    })
+    describe("assess batch link",()=>{
+        it("user clicks on assess batch",()=>{
+            manage.assessBatch();
         })
     })
 })

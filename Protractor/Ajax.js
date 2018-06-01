@@ -5,7 +5,6 @@ var Ajax = function(){
     this.getTrainers = function(){
         return ajax("getTrainers");
     }
-
     this.getSkillTypes = function(){
         return ajax("getSkill");
     }
@@ -15,6 +14,10 @@ var Ajax = function(){
     this.getTrainingTypes= function(){
         return ajax("getTrainingType");
     }
+    this.getTrainee = function(){
+        return ajax("getTrainee")
+    }
+    
     function ajax(r){
         var promise = new Promise(function(resolve, reject){
             http.get('http://localhost:8080/ProjectTwo/'+r+'.ajax', (res) => {
