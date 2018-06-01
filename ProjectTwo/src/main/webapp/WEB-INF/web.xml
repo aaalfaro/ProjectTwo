@@ -14,7 +14,7 @@
   	<servlet-name>AjaxServlet</servlet-name>
   	<display-name>AjaxServlet</display-name>
   	<description>For retrieving POJO's</description>
-  	<servlet-class>com.revature.servlets.AjaxServlet</servlet-class>
+  	<servlet-class>com.revature.servlet.AjaxServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Servlet</servlet-name>
