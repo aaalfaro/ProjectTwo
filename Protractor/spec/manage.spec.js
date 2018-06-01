@@ -8,7 +8,7 @@ browser.driver.controlFlow().execute = function() {
 
   // queue 100ms wait
   origFn.call(browser.driver.controlFlow(), function() {
-    return protractor.promise.delayed(25);
+    return protractor.promise.delayed(20);
   });
 
   return origFn.apply(browser.driver.controlFlow(), args);
@@ -251,8 +251,8 @@ describe("Testing manage page", ()=>{
         })
         it("user clicks edit batch button",()=>{
             let batchRow =  manage.ViewTrainees();
-           let lastRow;
-           batchRow.all(by.tagName("tr")).then(function(rows){
+            let lastRow;
+             batchRow.all(by.tagName("tr")).then(function(rows){
                 lastRow = rows[rows.length -1];
                 lastRow.all(by.tagName("td")).then(function(row){
                     row[11].element(by.tagName("a")).click()
@@ -265,6 +265,17 @@ describe("Testing manage page", ()=>{
                 option[8].click();
             })
             manage.updateBatch();
+        })
+        it("user deletes batch",()=>{
+            let batchRow =  manage.ViewTrainees();
+            let lastRow;
+             batchRow.all(by.tagName("tr")).then(function(rows){
+                lastRow = rows[rows.length -1];
+                lastRow.all(by.tagName("td")).then(function(row){
+                    row[12].element(by.tagName("a")).click()
+                })
+                manage.deleteBatch();
+           })
         })
     })
     describe("assess batch link",()=>{

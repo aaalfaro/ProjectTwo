@@ -115,6 +115,9 @@ let Manage = function(){
     this.assessBatch = function(){
         element(by.css("body > div > ui-view > nav > div > ul.nav.navbar-nav.navbar-right > li:nth-child(3) > a")).click();
     }
+    this.deleteBatch = function(){
+        element(by.css("#deleteBatchModal > div > div > div.modal-footer > input")).click();
+    }
 
 }
 module.exports = new Manage();
