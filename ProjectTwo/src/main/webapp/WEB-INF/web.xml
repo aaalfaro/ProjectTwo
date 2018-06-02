@@ -16,12 +16,22 @@
   	<description>For retrieving POJO's</description>
   	<servlet-class>com.revature.servlet.AjaxServlet</servlet-class>
   </servlet>
+    <servlet>
+  	<servlet-name>ProtractorServlet</servlet-name>
+  	<display-name>ProtractorServlet</display-name>
+  	<description></description>
+  	<servlet-class>com.revature.servlet.ProtractorServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Servlet</servlet-name>
-  	<url-pattern>/Servlet</url-pattern>
+  	<url-pattern>/TestNG</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>AjaxServlet</servlet-name>
   	<url-pattern>*.ajax</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+  	<servlet-name>ProtractorServlet</servlet-name>
+  	<url-pattern>/Protractor</url-pattern>
   </servlet-mapping>
 </web-app>
