@@ -5,6 +5,6 @@ import { ProtractorComponent } from '../app/components/protractor/protractor.com
 
 export const AppRoutes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'TestNG', component: TestNgComponent},
-    { path: 'Protractor', component: ProtractorComponent}
+    { path: 'TestNGResults', component: TestNgComponent},
+    { path: 'ProtractorResults', component: ProtractorComponent}
 ]
