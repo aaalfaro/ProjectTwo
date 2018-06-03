@@ -1,16 +1,18 @@
 package com.revature.servlet;
 
-import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
+import org.json.XML;
 import org.testng.TestListenerAdapter;
 import org.testng.TestNG;
 
@@ -33,25 +35,29 @@ public class Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+
 		TestListenerAdapter tla = new TestListenerAdapter();
 		TestNG testng = new TestNG();
 		testng.setTestClasses(new Class[] { TestNGRunner.class });
 		testng.addListener(tla);
 		testng.run();
-		
-		ServletOutputStream stream = null;
-		BufferedInputStream buf = null;
-		stream=response.getOutputStream();
-		File file=new File("test-output/testng-results.xml");
-		response.setContentType("text/xml");
-		response.setContentLength((int)file.length());
-		FileInputStream fis=new FileInputStream(file);
-		buf=new BufferedInputStream(fis);
-		int readBytes=0;
-		while((readBytes=buf.read())!=-1) {
-			stream.write(readBytes);
+
+		BufferedReader br = new BufferedReader(new FileReader(new File("test-output/testng-results.xml")));
+		String line;
+		StringBuilder sb = new StringBuilder();
+
+		while((line=br.readLine())!= null){
+		    sb.append(line.trim());
 		}
-		buf.close();
+		br.close();
+		
+		JSONObject json=XML.toJSONObject(sb.toString());
+		response.setContentType("application/json");
+		PrintWriter pw=response.getWriter();
+		pw.print(json);
+		pw.flush();
+		
 	}
 
 	/**

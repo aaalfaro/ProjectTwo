@@ -1,14 +1,18 @@
 package com.revature.servlet;
 
-import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONObject;
+import org.json.XML;
 
 /**
  * Servlet implementation class ProtractorServlet
@@ -37,19 +41,20 @@ public class ProtractorServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		ServletOutputStream stream = null;
-		BufferedInputStream buf = null;
-		stream=response.getOutputStream();
-		File file=new File("testresults/xmloutput.xml");
-		response.setContentType("text/xml");
-		response.setContentLength((int)file.length());
-		FileInputStream fis=new FileInputStream(file);
-		buf=new BufferedInputStream(fis);
-		int readBytes=0;
-		while((readBytes=buf.read())!=-1) {
-			stream.write(readBytes);
+		BufferedReader br = new BufferedReader(new FileReader(new File("testresults/xmloutput.xml")));
+		String line;
+		StringBuilder sb = new StringBuilder();
+
+		while((line=br.readLine())!= null){
+		    sb.append(line.trim());
 		}
-		buf.close();
+		br.close();
+		
+		JSONObject json=XML.toJSONObject(sb.toString());
+		response.setContentType("application/json");
+		PrintWriter pw=response.getWriter();
+		pw.print(json);
+		pw.flush();
 	}
 
 	/**

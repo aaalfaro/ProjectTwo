@@ -1,4 +1,27 @@
-<a href="./"><button type="button" class="btn btn-success">Home</button></a>
-<br><br>
-<h2>Protractor Results</h2>
-{{getResults()}}
+<div class="container">
+    <a href="./">
+        <button type="button" class="btn btn-success">Home</button>
+    </a>
+    <br>
+    <br>
+    <h2>Protractor Results</h2>
+    <div *ngFor="let suite of result.testsuites.testsuite">
+            <br>
+        <h5>{{suite.name}}</h5> <strong>Tests: {{suite.tests}}, Failures: {{suite.failures}}</strong>
+        Time completed (UTC): {{suite.timestamp}}
+        <div *ngIf="suite.testcase">
+            <div *ngIf="suite.testcase.name">
+                {{suite.testcase.name}}
+                <div *ngIf="suite.testcase.failure" style="color:red;">
+                    {{suite.testcase.failure.message}}
+                </div>
+            </div>
+            <div *ngIf="suite.testcase.length>1">
+                <div *ngFor="let case of suite.testcase">
+                    {{case.name}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
