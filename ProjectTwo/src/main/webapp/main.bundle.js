@@ -212,7 +212,7 @@ var ProtractorComponent = /** @class */ (function () {
         this.getResults().subscribe(function (data) { return _this.result = data; }, function (err) { return console.log(err.error); });
     };
     ProtractorComponent.prototype.getResults = function () {
-        return this.http.get("http://ec2-54-161-125-174.compute-1.amazonaws.com:8090/ProjectTwo/Protractor");
+        return this.http.get("http://ec2-54-161-125-174.compute-1.amazonaws.com:8090/ProjectTwo/ProtractorTest");
     };
     ProtractorComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
@@ -338,8 +338,8 @@ Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* pl
 
 var AppRoutes = [
     { path: '', component: __WEBPACK_IMPORTED_MODULE_1__app_components_home_home_component__["a" /* HomeComponent */] },
-    { path: 'TestNGResults', component: __WEBPACK_IMPORTED_MODULE_0__app_components_test_ng_test_ng_component__["a" /* TestNgComponent */] },
-    { path: 'ProtractorResults', component: __WEBPACK_IMPORTED_MODULE_2__app_components_protractor_protractor_component__["a" /* ProtractorComponent */] }
+    { path: 'TestNG', component: __WEBPACK_IMPORTED_MODULE_0__app_components_test_ng_test_ng_component__["a" /* TestNgComponent */] },
+    { path: 'Protractor', component: __WEBPACK_IMPORTED_MODULE_2__app_components_protractor_protractor_component__["a" /* ProtractorComponent */] }
 ];
 
 

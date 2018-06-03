@@ -24,7 +24,7 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>Servlet</servlet-name>
-  	<url-pattern>/TestNG</url-pattern>
+  	<url-pattern>/TestNGTest</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>AjaxServlet</servlet-name>
@@ -32,6 +32,6 @@
   </servlet-mapping>
     <servlet-mapping>
   	<servlet-name>ProtractorServlet</servlet-name>
-  	<url-pattern>/Protractor</url-pattern>
+  	<url-pattern>/ProtractorTest</url-pattern>
   </servlet-mapping>
 </web-app>
