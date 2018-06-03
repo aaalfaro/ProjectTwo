@@ -28,14 +28,14 @@ public class ProtractorServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
-//		Process p=Runtime.getRuntime().exec("cmd /c protractor C:\\Users\\Administrator\\.jenkins\\workspace\\ProjectTwo\\Protractor\\conf.js");
-//		try {
-//			p.waitFor();
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		response.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+		Process p=Runtime.getRuntime().exec("cmd /c protractor C:\\Users\\Administrator\\.jenkins\\workspace\\ProjectTwo\\Protractor\\conf.js");
+		try {
+			p.waitFor();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		ServletOutputStream stream = null;
 		BufferedInputStream buf = null;
