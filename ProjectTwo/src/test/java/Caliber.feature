@@ -15,17 +15,17 @@ Feature: Testing the hyperlinks for revature
       | home      | home      | home    |
       | home      | report    | report  |
       | home      | assess    | assess  |
-      | manage    | manage    | manage  |
-      | manage    | home      | home    |
-      | manage    | report    | report  |
-      | manage    | assess    | assess  |
-      | home      | manage    | manage  |
-      | assess    | home      | home    |
-      | assess    | report    | report  |
-      | assess    | assess    | assess  |
-      | home      | manage    | manage  |
-      | report    | home      | home    |
-      | report    | report    | report  |
-      | report    | assess    | assess  |
+   #   | manage    | manage    | manage  |
+   #   | manage    | home      | home    |
+   #   | manage    | report    | report  |
+   #   | manage    | assess    | assess  |
+   #   | home      | manage    | manage  |
+    #  | assess    | home      | home    |
+   #   | assess    | report    | report  |
+    #  | assess    | assess    | assess  |
+    #  | home      | manage    | manage  |
+    # | report    | home      | home    |
+    #  | report    | report    | report  |
+    #  | report    | assess    | assess  |
 
   

@@ -7,7 +7,7 @@ Feature: Testing the buttons that close menus
   Scenario Outline: 
     When user clicks "<button>"
     And user closes "<closeButton>"
-    Then the "<window>" should be close
+    Then the "<window>" should be closed
 
     Examples: 
       | button        | closeButton         | window        |

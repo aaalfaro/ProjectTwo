@@ -13,15 +13,19 @@ public abstract class POM {
 	
 	protected WebDriver driver;
 	protected WebDriverWait wait;
-	
+	public static final String ASSESSMENT_URL = "https://dev-caliber.revature.tech/caliber/#/vp/assess";
+	public static final String HOME_URL = "https://dev-caliber.revature.tech/caliber/#/vp/home";
+	public static final String MANAGE_URL = "https://dev-caliber.revature.tech/caliber/#/vp/manage";
+	public static final String REPORT_URL = "https://dev-caliber.revature.tech/caliber/#/vp/reports";		
 	public POM(WebDriver driver) {
 		this.driver = driver;
-		wait = new WebDriverWait(driver, 15);
+		wait = new WebDriverWait(driver, 5);
 	}
 	
 	public abstract String getId();
 	
 	public WebElement getHomeAnchor() {     
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/ui-view/nav/div/ul[2]/li[1]/a")));
 		return driver.findElement(By.xpath("/html/body/div/ui-view/nav/div/ul[2]/li[1]/a"));
 	}
 	public WebElement getManageAnchor() {
@@ -31,7 +35,7 @@ public abstract class POM {
 		return driver.findElement(By.xpath("/html/body/div/ui-view/nav/div/ul[2]/li[3]/a"));
 	}
 	public WebElement getReportAnchor() {
-		return driver.findElement(By.xpath("/html/body/div/ui-view/nav/div/ul[2]/li[4]/a"));
+		return driver.findElement(By.xpath("/html/body/div/ui-view/nav/div/ul[2]/li[6]/a"));
 	}
 	public void DropDown(String input,String locator) {					
 

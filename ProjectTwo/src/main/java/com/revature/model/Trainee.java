@@ -62,10 +62,36 @@ public class Trainee {
 	@JoinColumn(name= "STATUS_ID")
 	private Status status;
 	
+	@ManyToOne
+	@JoinColumn(name="BATCH_ID")
+	private Batch batch;
+	
 	public Trainee() {
 		super();
 	}
 	
+	
+	public Trainee(int id, String name, String email, String skype, String phone, String college, String degree,
+			String major, String recruiter, String screener, int completion, String url, Status status,
+			Batch batch) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.skype = skype;
+		this.phone = phone;
+		this.college = college;
+		this.degree = degree;
+		this.major = major;
+		this.recruiter = recruiter;
+		this.screener = screener;
+		this.completion = completion;
+		this.url = url;
+		this.status = status;
+		this.batch = batch;
+	}
+
+
 	public Trainee(String name, String email, String skype, String phone, String college, String degree,
 			String major, String recruiter, String screener, int completion, String url, Status status) {
 		super();
@@ -205,6 +231,16 @@ public class Trainee {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+
+	public Batch getBatch() {
+		return batch;
+	}
+
+
+	public void setBatch(Batch batch) {
+		this.batch = batch;
+	}
+
 
 	@Override
 	public String toString() {

@@ -50,9 +50,8 @@ public class Application {
 //				"Computer Science", "some guy", "lolwut", 100, "www.fakeurl.com");
 //		TraineeService.insertTrainee(Andy);
 	
-		Status status = StatusService.getEverything().get(0);
-		System.out.println(status);
-		Trainee Bobby = new Trainee("Bobby","fake@email.com","aaaa","1234567890","A Good University","Culinary Alchemy","Cooking with fire","recruit","screener",50,"url.com",status);
+		Status status = StatusService.getEverything().get(2);
+		Trainee Bobby = new Trainee("Jimmy","not@email.com","bbbb","0987654321","The Best University","Lunar Sciences","Phases","recruit","screener",60,"url.com",status);
 		TraineeService.insertTrainee(Bobby);
 	}
 }

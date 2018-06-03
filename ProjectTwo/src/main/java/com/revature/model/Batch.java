@@ -55,6 +55,9 @@ public class Batch {
 	@OneToMany(fetch = FetchType.EAGER,mappedBy="batch")
 	public List<Trainer> trainers;
 	
+	@OneToMany(mappedBy="batch")
+	public List<Trainee> trainees;
+	
 	@ManyToOne
 	@JoinColumn(name = "SKILL_ID")
 	private SkillType skill;

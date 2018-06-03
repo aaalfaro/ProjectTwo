@@ -26,4 +26,10 @@ public class TraineeService {
 	public static List<Trainee> AjaxTrainee(){
 		return dao.AjaxTrainee();
 	}
+	public static boolean assignTraineeToBatch(int traineeId, int batchId) {
+		return dao.assignBatch(traineeId, batchId);
+	}
+	public static boolean removeTraineeFromBatch(int traineeId) {
+		return dao.removeFromBatch(traineeId);
+	}
 }

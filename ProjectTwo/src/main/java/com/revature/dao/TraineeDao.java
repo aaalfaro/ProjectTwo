@@ -9,4 +9,6 @@ public interface TraineeDao {
 	List<Trainee> getAllTrainees();
 	boolean addTrainee(Trainee trainee);
 	List<Trainee> AjaxTrainee();
+	public boolean assignBatch(int traineeId, int batchId);
+	public boolean removeFromBatch(int traineeId);
 }

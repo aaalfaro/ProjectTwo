@@ -12,9 +12,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ManageBatchPage extends POM{
 	
+	public int numElements;
 	@Override
 	public String getId() {
-		return driver.findElement(By.cssSelector("#manage > div:nth-child(2) > div > div > table > thead > tr > th:nth-child(1)")).getText();
+		return driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/thead/tr/th[1]")).getText();
 	}
 
 	public ManageBatchPage(WebDriver driver) {
@@ -141,7 +142,7 @@ public class ManageBatchPage extends POM{
 		WebElement list = driver.findElement(By.xpath("//*[@id=\"manage\"]/div[1]/div/div/ul/li[1]"));
 		list.click();
 		List<WebElement> listOfElements = list.findElements(By.tagName("a"));
-		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath("//*[@id=\"manage\"]/div[1]/div/div/ul/li[1]"))));
+		wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//*[@id=\"manage\"]/div[1]/div/div/ul/li[1]"))));
 		for(WebElement el : listOfElements) {
 			if(el.getText().equals(input)) {
 			wait.until(ExpectedConditions.visibilityOf(el));
@@ -196,8 +197,9 @@ public class ManageBatchPage extends POM{
 
 	public int getTraineeRow(String name) {
 		wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr[1]/td"))));
-		List<WebElement> names = driver.findElements(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr[1]/td"));
+		List<WebElement> names = driver.findElements(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/*/td[1]"));
 		for(int i = 0; i < names.size();i++) {
+			System.out.println(names.get(i).getText());
 			if(names.get(i).getText().equals(name)) {
 				return i+1;
 			}
@@ -213,7 +215,8 @@ public class ManageBatchPage extends POM{
 	}
 
 	public void deleteBatch(int traineeRow) {
-		driver.findElement(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr["+traineeRow+"]/td[15]/a/span")).click();
+		driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+traineeRow+"]/td[13]/a")).click();
+	
 	}
 
 	public WebElement deleteBatchSubmit() {
@@ -224,6 +227,7 @@ public class ManageBatchPage extends POM{
 		wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr[1]"))));
 		List<WebElement> names = driver.findElements(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/*/td[1]"));
 		for(int i = 0; i < names.size();i++) {
+			System.out.println(names.get(i).getText());
 			if(names.get(i).getText().equals(name)) {
 				return i+1;
 			}
@@ -231,7 +235,7 @@ public class ManageBatchPage extends POM{
 		return -1;
 	}
 
-	public void batchAction(String action, int traineeRow) {
+	public void batchAction(String action, int BatchRow) {
 		String actionCol = "";
 		switch(action) {
 		case "update": actionCol = "12";break;
@@ -239,10 +243,27 @@ public class ManageBatchPage extends POM{
 		case "delete": actionCol = "13";break;
 			
 		}
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+traineeRow+"]/td["+actionCol+"]/a")));
-		driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+traineeRow+"]/td["+actionCol+"]/a")).click();
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+BatchRow+"]/td["+actionCol+"]/a")));
+		driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+BatchRow+"]/td["+actionCol+"]/a")).click();
 		
 	}
+	public void traineeAction(String action, int traineeRow) {
+		String actionCol="";
+		switch(action) {
+		case"delete":actionCol ="15"; break;
+		case"update":actionCol ="14";break;
+		}
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr["+traineeRow+"]/td["+actionCol+"]/a")));
+		driver.findElement(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr["+traineeRow+"]/td["+actionCol+"]/a")).click();
 	}
+	
+public String getBatchInfo(String batchRow,String statCol) {	
+	return driver.findElement(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr["+batchRow+"]/td["+statCol+"]")).getText();
+}
+public String getTraineeInfo(String traineeRow,String statCol) {	
+										
+	return driver.findElement(By.xpath("//*[@id=\"viewTraineeModal\"]/div/div/div[2]/div[2]/div/table/tbody/tr["+traineeRow+"]/td["+statCol+"]")).getText();
+}
+}
 
 

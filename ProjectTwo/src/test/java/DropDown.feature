@@ -10,14 +10,12 @@ Feature: Testing the drop down setting through out caliber
     Then "<option>" should be displayed
 
     Examples: 
-      | button | choice                 | dropDown      | option        |
-      | manage |                   2016 | manageYear    | manageYear    |
-      | assess |                   2016 | assessYear    | assessYear    |
-      | assess | Patrick Walsh - 9/8/18 | assessTrainer | assessTrainer |
-      |	assess | Week 2									|	weekTab				|	weekTab				|
-      | report |                   2016 | reportYear    | reportYear    |
-      | report | Patrick Walsh - 9/8/18 | reportTrainer | reportTrainer |
-      | report | Week 2                 | reportWeek    | reportWeek    |
-      | report | All                    | reportTrainee | reportTrainee |
-      | report | Charts                 | reportPdf     | reportPdf     |
-      
+      | button | choice              | dropDown      | option        |
+      | manage |                2016 | manageYear    | manageYear    |
+      | assess |                2016 | assessYear    | assessYear    |
+      | assess | Ankit Garg - 6/9/21 | assessTrainer | assessTrainer |
+      | report |                2016 | reportYear    | reportYear    |
+      | report | Ankit Garg - 6/9/21 | reportTrainer | reportTrainer |
+      | report | Week 1              | reportWeek    | reportWeek    |
+      | report | All                 | reportTrainee | reportTrainee |
+      | report | Charts              | reportPdf     | reportPdf     |

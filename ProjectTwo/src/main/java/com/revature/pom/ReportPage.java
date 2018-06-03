@@ -22,7 +22,7 @@ public class ReportPage extends POM{
 	}
 	@Override
 	public String getId() {
-		return driver.findElement(By.cssSelector("#caliber-container > div > div > div.col-sm-12.col-md-12.col-lg-12 > div:nth-child(1) > div > div > div.panel-heading")).getText();
+		return driver.findElement(By.xpath("//*[@id=\"searchTextBox\"]")).getText();
 	}
 	public WebElement getTechSkillsClose() {
 		return driver.findElement(By.xpath("//*[@id=\"insert-trainee\"]/div/div/div[1]/button/span"));
