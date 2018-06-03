@@ -45,7 +45,10 @@ public class CaliberStepImpl {
 	@Given("^a user opens a webbrowser$")
 	public void a_user_opens_a_webbrowser() throws Throwable {
 		driver = DriverFactory.getDriver("chrome");
+		driver.get("https://dev-caliber.revature.tech");
+		Thread.sleep(3000);
 		driver.navigate().to("https://dev-caliber.revature.tech/caliber/#/trainer/home");
+		Thread.sleep(3000);
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
 		wait = new WebDriverWait(driver, 5);
@@ -61,7 +64,7 @@ public class CaliberStepImpl {
 
 	@Given("^choose to assessBatch$")
 	public void choose_to_assessBatch() throws Throwable {
-		home.getAssessAnchor().click();
+		driver.navigate().to(POM.ASSESSMENT_URL);
 		assess = new AssessBatchPage(driver);
 	}
 
@@ -105,50 +108,50 @@ public class CaliberStepImpl {
 			cur.getReportAnchor().click();
 			break;
 		case "importBatch":
-			home.getManageAnchor().click();
+			driver.navigate().to(POM.MANAGE_URL);
 			manage = new ManageBatchPage(driver);
 			manage.getImportBatchButton().click();
 			break;
 		case "viewTrainees":
-			home.getManageAnchor().click();
+			driver.navigate().to(POM.MANAGE_URL);
 			manage = new ManageBatchPage(driver);
 			manage.getViewBatchButton("0").click();
 			break;
 		case "deleteBatch":
-			home.getManageAnchor().click();
+			driver.navigate().to(POM.MANAGE_URL);
 			manage = new ManageBatchPage(driver);
 			manage.getDeleteBatchButton().click();
 			break;
 		case "addTrainee":
-			home.getManageAnchor().click();
+			driver.navigate().to(POM.MANAGE_URL);
 			manage = new ManageBatchPage(driver);
 			manage.getViewBatchButton("0").click();
 			wait.until(ExpectedConditions.visibilityOf(manage.getAddTraineeButton()));
 			manage.getAddTraineeButton().click();
 			break;
 		case "createAssess":
-			home.getAssessAnchor().click();
+			driver.navigate().to(POM.ASSESSMENT_URL);
 			assess = new AssessBatchPage(driver);
 			assess.getCreateAssessButton().click();
 			break;
 		case "createWeek":
-			home.getAssessAnchor().click();
+			driver.navigate().to(POM.ASSESSMENT_URL);
 			assess = new AssessBatchPage(driver);
 			wait.until(ExpectedConditions.elementToBeClickable(assess.getCreateWeekButton()));
 			assess.getCreateWeekButton().click();
 			break;
 		case "createBatch":
-			home.getManageAnchor().click();
+			driver.navigate().to(POM.MANAGE_URL);
 			manage = new ManageBatchPage(driver);
 			manage.getCreateBatchButton().click();
 			break;
 		case "techSkills":
-			home.getReportAnchor().click();
+			driver.navigate().to(POM.REPORT_URL);
 			report = new ReportPage(driver);
 			report.getTechSkillsButton().click();
 			break;
 		case "save":
-			home.getAssessAnchor().click();
+			driver.navigate().to(POM.ASSESSMENT_URL);
 			assess = new AssessBatchPage(driver);
 			assess.getSaveButton().click();
 			break;
@@ -314,7 +317,7 @@ public class CaliberStepImpl {
 			assess.updateDropDown(arg1, "rawScore");
 			break;
 		case "searchTextBox":
-			home.getReportAnchor().click();
+			driver.navigate().to(POM.REPORT_URL);
 			report = new ReportPage(driver);
 			report.input(arg1, arg2);
 			driver.findElement(By.xpath("//*[@id=\"searchTextBox\"]")).submit();
@@ -393,12 +396,12 @@ public class CaliberStepImpl {
 			assess = new AssessBatchPage(driver);
 			assess.weekTab(arg1);
 		case "updateAssess":
-			home.getAssessAnchor().click();
+			driver.navigate().to(POM.ASSESSMENT_URL);
 			assess = new AssessBatchPage(driver);
 			assess.getUpdateAssessButton().click();
 			break;
 		case "updateBatch":
-			home.getManageAnchor().click();
+			driver.navigate().to(POM.MANAGE_URL);
 			manage = new ManageBatchPage(driver);
 			manage.getUpdateBatchButton(arg1).click();
 			break;
@@ -407,18 +410,18 @@ public class CaliberStepImpl {
 			manage.getUpdateTraineeButton(arg1).click();
 			break;
 		case "viewBatch":
-			home.getManageAnchor().click();
+			driver.navigate().to(POM.MANAGE_URL);
 			manage = new ManageBatchPage(driver);
 			manage.yearDropDown("2016");
 			manage.getViewBatchButton(arg1).click();
 			break;
 		case "deleteAssess":
-			home.getAssessAnchor().click();
+			driver.navigate().to(POM.ASSESSMENT_URL);
 			assess = new AssessBatchPage(driver);
 			assess.getDeleteAssess(arg1).click();
 			break;
 		case "deleteBatch":
-			home.getManageAnchor().click();
+			driver.navigate().to(POM.MANAGE_URL);
 			manage = new ManageBatchPage(driver);
 			manage.yearDropDown("2016");
 			manage.getDeleteBatchButton(arg1).click();
@@ -430,7 +433,7 @@ public class CaliberStepImpl {
 	
 	@When("^user clicks a pdf button$")
 	public void user_clicks_a_pdf_button() throws Throwable {
-		home.getReportAnchor().click();
+		driver.navigate().to(POM.ASSESSMENT_URL);
 		report = new ReportPage(driver);
 		report.TestPdfs();
 	}
@@ -438,7 +441,7 @@ public class CaliberStepImpl {
 	@When("^a user inserts an assessment \"([^\"]*)\"$")
 	public void a_user_inserts_an_assessment(String pk) throws Throwable {
 		Assessment assessment = AssessmentService.getAssessment(Integer.parseInt(pk));
-		home.getAssessAnchor().click();
+		driver.navigate().to(POM.ASSESSMENT_URL);
 		assess = new AssessBatchPage(driver);
 		assess.yearDropDown("2016");
 		assess.getCreateAssessButton().click();
@@ -453,7 +456,7 @@ public class CaliberStepImpl {
 	@When("^a user inserts a batch \"([^\"]*)\"$")
 	public void a_user_inserts_a_batch(String arg1) throws Throwable {
 		Batch batch = BatchService.getBatch(Integer.parseInt(arg1));
-		home.getManageAnchor().click();
+		driver.navigate().to(POM.MANAGE_URL);
 		manage = new ManageBatchPage(driver);
 		manage.numElements = driver.findElements(By.xpath("//*[@id=\"manage\"]/div[2]/div/div/table/tbody/tr[1]")).size();
 		manage.getCreateBatchButton().click();
@@ -475,7 +478,7 @@ public class CaliberStepImpl {
 	@When("^a user inserts a trainee \"([^\"]*)\"$")
 	public void a_user_inserts_a_trainee(String arg1) throws Throwable {
 		Trainee trainee = TraineeService.getTrainee(Integer.parseInt(arg1));
-		home.getManageAnchor().click();
+		driver.navigate().to(POM.MANAGE_URL);
 		manage = new ManageBatchPage(driver);
 		manage.yearDropDown("2016");
 		manage.getViewBatchButton(String.valueOf(manage.getBatchRow("Test Batch 1"))).click();
@@ -500,7 +503,7 @@ public class CaliberStepImpl {
 
 	@When("^a user clicks the add week button$")
 	public void a_user_clicks_the_add_week_button() throws Throwable {
-		home.getAssessAnchor().click();
+		driver.navigate().to(POM.ASSESSMENT_URL);
 		assess = new AssessBatchPage(driver);
 		wait.until(ExpectedConditions.visibilityOf(assess.getCreateWeekButton()));
 		assess.getCreateWeekButton().click();
@@ -511,7 +514,7 @@ public class CaliberStepImpl {
 
 	@When("^user deletes batch \"([^\"]*)\"$")
 	public void user_deletes_batch(String arg1) throws Throwable {
-		home.getManageAnchor().click();
+		driver.navigate().to(POM.MANAGE_URL);
 		manage = new ManageBatchPage(driver);
 		Batch batch = BatchService.getBatch(Integer.parseInt(arg1));
 		manage.yearDropDown("2016");
@@ -524,7 +527,7 @@ public class CaliberStepImpl {
 	
 	@When("^user deletes trainee \"([^\"]*)\"$")
 	public void user_deletes_trainee(String arg1) throws Throwable {
-		home.getManageAnchor().click();
+		driver.navigate().to(POM.MANAGE_URL);
 		manage = new ManageBatchPage(driver);
 		Trainee trainee = TraineeService.getTrainee(Integer.parseInt(arg1));
 		manage.yearDropDown("2016");

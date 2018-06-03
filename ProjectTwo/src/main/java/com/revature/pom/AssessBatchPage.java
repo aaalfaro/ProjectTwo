@@ -22,7 +22,7 @@ public class AssessBatchPage extends POM{
 	}
 	@Override
 	public String getId() {
-		return driver.findElement(By.cssSelector("#trainer-assess-table > div > div > ul > ul > table > thead > tr > th.col-sm-9.col-md-9.col-lg-9")).getText();
+		return driver.findElement(By.xpath("//*[@id=\"trainer-assess-table\"]/div/div/ul/ul/table/thead/tr/th[1]")).getText();
 	}
 	public WebElement getCreateAssessButton() {
 		return driver.findElement(By.xpath("/html/body/div/ui-view/ui-view/div[1]/div/div[2]/ul[1]/li[3]"));

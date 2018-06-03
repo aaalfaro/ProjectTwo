@@ -14,6 +14,6 @@ private static final String URL = "https://dev-caliber.revature.tech/caliber/#/t
 	}
 	@Override						
 	public String getId() {					
-		return driver.findElement(By.xpath("//*[@id=\"home\"]/div[1]/h1")).getText();
+		return driver.findElement(By.xpath("/html/body/div/ui-view/ui-view/div[1]/h1")).getText();
 	}
 }
