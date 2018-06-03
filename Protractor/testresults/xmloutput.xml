@@ -1,95 +1,163 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
- <testsuite name="Testing Caliber Home Page" timestamp="2018-06-01T01:07:25" hostname="localhost" time="8.128" errors="0" tests="0" skipped="0" failures="0">
+ <testsuite name="Testing Caliber Home Page" timestamp="2018-06-03T13:49:56" hostname="localhost" time="13.689" errors="0" tests="0" skipped="0" failures="0">
  </testsuite>
- <testsuite name="Testing Caliber Home Page.Are we at the right website?" timestamp="2018-06-01T01:07:31" hostname="localhost" time="0.874" errors="0" tests="2" skipped="0" failures="0">
-  <testcase classname="Testing Caliber Home Page.Are we at the right website?" name="We are at caliber right?" time="0.49">
-  </testcase>
-  <testcase classname="Testing Caliber Home Page.Are we at the right website?" name="This should be the home page" time="0.381">
+ <testsuite name="Testing Caliber Home Page.Navigate to the Caliber Trainer page" timestamp="2018-06-03T13:49:56" hostname="localhost" time="12.238" errors="0" tests="1" skipped="0" failures="0">
+  <testcase classname="Testing Caliber Home Page.Navigate to the Caliber Trainer page" name="should have 5 &amp;lt;li&amp;gt; if on the Trainer page" time="0.444">
   </testcase>
  </testsuite>
- <testsuite name="Testing Caliber Home Page.Take me to the Manage Batch page" timestamp="2018-06-01T01:07:31" hostname="localhost" time="1.341" errors="0" tests="1" skipped="0" failures="0">
-  <testcase classname="Testing Caliber Home Page.Take me to the Manage Batch page" name="Should take us to to the Manage Batch Page" time="1.341">
+ <testsuite name="Testing Caliber Home Page.Are we at the right website?" timestamp="2018-06-03T13:50:09" hostname="localhost" time="0.507" errors="0" tests="1" skipped="0" failures="0">
+  <testcase classname="Testing Caliber Home Page.Are we at the right website?" name="This should be the home page" time="0.507">
   </testcase>
  </testsuite>
- <testsuite name="Testing manage page" timestamp="2018-06-01T01:07:33" hostname="localhost" time="32.308" errors="0" tests="0" skipped="0" failures="0">
- </testsuite>
- <testsuite name="Testing manage page.Just making sure we are at the correct page" timestamp="2018-06-01T01:07:33" hostname="localhost" time="0.233" errors="0" tests="1" skipped="0" failures="0">
-  <testcase classname="Testing manage page.Just making sure we are at the correct page" name="user should be at the manage page" time="0.232">
+ <testsuite name="Testing Caliber Home Page.Take me to the Manage Batch page" timestamp="2018-06-03T13:50:09" hostname="localhost" time="0.944" errors="0" tests="1" skipped="0" failures="0">
+  <testcase classname="Testing Caliber Home Page.Take me to the Manage Batch page" name="Should take us to to the Manage Batch Page" time="0.943">
   </testcase>
  </testsuite>
- <testsuite name="Testing manage page.Testing dropdown for year" timestamp="2018-06-01T01:07:33" hostname="localhost" time="1.986" errors="0" tests="1" skipped="0" failures="0">
-  <testcase classname="Testing manage page.Testing dropdown for year" name="should cycle through all options in the dropdown" time="1.983">
+ <testsuite name="Testing manage page" timestamp="2018-06-03T13:50:10" hostname="localhost" time="50.951" errors="0" tests="0" skipped="0" failures="0">
+ </testsuite>
+ <testsuite name="Testing manage page.Just making sure we are at the correct page" timestamp="2018-06-03T13:50:10" hostname="localhost" time="1.513" errors="0" tests="1" skipped="0" failures="0">
+  <testcase classname="Testing manage page.Just making sure we are at the correct page" name="user should be at the manage page" time="1.513">
   </testcase>
  </testsuite>
- <testsuite name="Testing manage page.Creating a new batch" timestamp="2018-06-01T01:07:35" hostname="localhost" time="12.961" errors="0" tests="12" skipped="0" failures="0">
-  <testcase classname="Testing manage page.Creating a new batch" name="user clicks on the create batch button" time="0.343">
+ <testsuite name="Testing manage page.user clicks through links to other pages" timestamp="2018-06-03T13:50:12" hostname="localhost" time="6.036" errors="0" tests="3" skipped="0" failures="0">
+  <testcase classname="Testing manage page.user clicks through links to other pages" name="user clicks on assess batch" time="0.573">
   </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user inputs information about the new batch" time="0.63">
+  <testcase classname="Testing manage page.user clicks through links to other pages" name="user clicks on report" time="4.165">
   </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user selects training type" time="0.67">
-  </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user selects skill type" time="2.051">
-  </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user selects a location" time="0.626">
-  </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user selects a trainer" time="2.561">
-  </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user selects a trainer" time="2.64">
-  </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user selects a start date" time="0.556">
-  </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user selects an end date" time="0.479">
-  </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user selects a good grade" time="0.902">
-  </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user selects a passing grade" time="1.108">
-  </testcase>
-  <testcase classname="Testing manage page.Creating a new batch" name="user saves the batch" time="0.392">
+  <testcase classname="Testing manage page.user clicks through links to other pages" name="user clicks back to manage page" time="1.298">
   </testcase>
  </testsuite>
- <testsuite name="Testing manage page.A user modifies a batch" timestamp="2018-06-01T01:07:48" hostname="localhost" time="16.737" errors="0" tests="19" skipped="0" failures="0">
-  <testcase classname="Testing manage page.A user modifies a batch" name="clicks on add trainee" time="0.893">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user clicks button to add a trainee" time="0.77">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user adds trainee name" time="0.715">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user enters an email address" time="1.074">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user enters skype ID" time="0.699">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user eneters a phone number" time="0.623">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user enters college name" time="0.748">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user enters degree" time="0.657">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user enters major" time="0.658">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user enters recuiter name" time="0.709">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user enters tech screener name" time="0.691">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user enters project completion" time="0.68">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user enter profile URL" time="0.811">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="cycle through status" time="0.865">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user saves trainee" time="0.371">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user edits trainee information" time="3.036">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user clicks on active button" time="1.034">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user clicks edit batch button" time="0.53">
-  </testcase>
-  <testcase classname="Testing manage page.A user modifies a batch" name="user changes skill" time="1.171">
+ <testsuite name="Testing manage page.Testing dropdown for year" timestamp="2018-06-03T13:50:18" hostname="localhost" time="2.996" errors="0" tests="1" skipped="0" failures="0">
+  <testcase classname="Testing manage page.Testing dropdown for year" name="should cycle through all options in the dropdown" time="2.996">
   </testcase>
  </testsuite>
- <testsuite name="Testing manage page.assess batch link" timestamp="2018-06-01T01:08:05" hostname="localhost" time="0.391" errors="0" tests="1" skipped="0" failures="0">
-  <testcase classname="Testing manage page.assess batch link" name="user clicks on assess batch" time="0.391">
+ <testsuite name="Testing manage page.Creating a new batch" timestamp="2018-06-03T13:50:21" hostname="localhost" time="17.224" errors="0" tests="12" skipped="0" failures="0">
+  <testcase classname="Testing manage page.Creating a new batch" name="user clicks on the create batch button" time="0.536">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user inputs information about the new batch" time="1.074">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user selects training type" time="1.001">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user selects skill type" time="2.853">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user selects a location" time="0.987">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user selects a trainer" time="3.08">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user selects a trainer" time="3.143">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user selects a start date" time="0.655">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user selects an end date" time="0.548">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user selects a good grade" time="1.163">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user selects a passing grade" time="1.638">
+  </testcase>
+  <testcase classname="Testing manage page.Creating a new batch" name="user saves the batch" time="0.543">
+  </testcase>
+ </testsuite>
+ <testsuite name="Testing manage page.A user modifies a batch" timestamp="2018-06-03T13:50:38" hostname="localhost" time="22.572" errors="0" tests="20" skipped="0" failures="0">
+  <testcase classname="Testing manage page.A user modifies a batch" name="clicks on add trainee" time="0.741">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user clicks button to add a trainee" time="0.963">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user adds trainee name" time="1.038">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user enters an email address" time="1.029">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user enters skype ID" time="1.045">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user eneters a phone number" time="0.986">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user enters college name" time="1.038">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user enters degree" time="1">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user enters major" time="0.994">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user enters recuiter name" time="1.066">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user enters tech screener name" time="1.07">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user enters project completion" time="1.036">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user enter profile URL" time="1.115">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="cycle through status" time="1.231">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user saves trainee" time="0.556">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user edits trainee information" time="3.2">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user clicks on active button" time="1.51">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user clicks edit batch button" time="0.758">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user changes skill" time="1.021">
+  </testcase>
+  <testcase classname="Testing manage page.A user modifies a batch" name="user deletes batch" time="1.172">
+  </testcase>
+ </testsuite>
+ <testsuite name="Testing manage page.assess link" timestamp="2018-06-03T13:51:00" hostname="localhost" time="0.61" errors="0" tests="1" skipped="0" failures="0">
+  <testcase classname="Testing manage page.assess link" name="user clicks on assess batch" time="0.61">
+  </testcase>
+ </testsuite>
+ <testsuite name="Testing assess batch page" timestamp="2018-06-03T13:51:01" hostname="localhost" time="78.867" errors="0" tests="0" skipped="0" failures="0">
+ </testsuite>
+ <testsuite name="Testing assess batch page.user clicks through week tabs" timestamp="2018-06-03T13:51:01" hostname="localhost" time="30.673" errors="0" tests="1" skipped="0" failures="0">
+  <testcase classname="Testing assess batch page.user clicks through week tabs" name="user clicks through all possible tabs in all years" time="30.673">
+  </testcase>
+ </testsuite>
+ <testsuite name="Testing assess batch page.test creating assessment and cycling through trainers" timestamp="2018-06-03T13:51:32" hostname="localhost" time="23.174" errors="0" tests="2" skipped="0" failures="0">
+  <testcase classname="Testing assess batch page.test creating assessment and cycling through trainers" name="user cycles through trainers" time="12.832">
+  </testcase>
+  <testcase classname="Testing assess batch page.test creating assessment and cycling through trainers" name="user creates an assessment" time="10.342">
+  </testcase>
+ </testsuite>
+ <testsuite name="Testing assess batch page.user input into assessment table" timestamp="2018-06-03T13:51:55" hostname="localhost" time="13.407" errors="0" tests="1" skipped="0" failures="0">
+  <testcase classname="Testing assess batch page.user input into assessment table" name="clicks on all columns in a row" time="13.407">
+  </testcase>
+ </testsuite>
+ <testsuite name="Testing assess batch page.Enter feedback and save" timestamp="2018-06-03T13:52:08" hostname="localhost" time="10.266" errors="0" tests="3" skipped="0" failures="0">
+  <testcase classname="Testing assess batch page.Enter feedback and save" name="user enters feedback" time="4.479">
+  </testcase>
+  <testcase classname="Testing assess batch page.Enter feedback and save" name="user clicks on save button" time="0.943">
+  </testcase>
+  <testcase classname="Testing assess batch page.Enter feedback and save" name="add a new week" time="4.844">
+  </testcase>
+ </testsuite>
+ <testsuite name="Testing assess batch page.Report page" timestamp="2018-06-03T13:52:18" hostname="localhost" time="1.347" errors="0" tests="1" skipped="0" failures="0">
+  <testcase classname="Testing assess batch page.Report page" name="user clicks on report page" time="1.347">
+  </testcase>
+ </testsuite>
+ <testsuite name="testing reports page" timestamp="2018-06-03T13:52:20" hostname="localhost" time="49.389" errors="0" tests="0" skipped="0" failures="0">
+ </testsuite>
+ <testsuite name="testing reports page.loop through all dropdowns" timestamp="2018-06-03T13:52:20" hostname="localhost" time="43.206" errors="0" tests="4" skipped="0" failures="0">
+  <testcase classname="testing reports page.loop through all dropdowns" name="user clicks through different years" time="4.691">
+  </testcase>
+  <testcase classname="testing reports page.loop through all dropdowns" name="user clicks through different trainers" time="7.024">
+  </testcase>
+  <testcase classname="testing reports page.loop through all dropdowns" name="user clicks through different weeks" time="20.094">
+  </testcase>
+  <testcase classname="testing reports page.loop through all dropdowns" name="user clicks through different trainees" time="11.397">
+  </testcase>
+ </testsuite>
+ <testsuite name="testing reports page.Download reports" timestamp="2018-06-03T13:53:03" hostname="localhost" time="3.412" errors="0" tests="4" skipped="0" failures="0">
+  <testcase classname="testing reports page.Download reports" name="user downloads cumulative scores" time="1.116">
+  </testcase>
+  <testcase classname="testing reports page.Download reports" name="user download batch QC report" time="0.697">
+  </testcase>
+  <testcase classname="testing reports page.Download reports" name="user downloads tech skill" time="0.862">
+  </testcase>
+  <testcase classname="testing reports page.Download reports" name="user downloads weekly progress" time="0.737">
+  </testcase>
+ </testsuite>
+ <testsuite name="testing reports page.user clicks through trainee comparison" timestamp="2018-06-03T13:53:06" hostname="localhost" time="2.768" errors="0" tests="2" skipped="0" failures="0">
+  <testcase classname="testing reports page.user clicks through trainee comparison" name="user clicks on comparison button" time="0.561">
+  </testcase>
+  <testcase classname="testing reports page.user clicks through trainee comparison" name="user clicks through different trainees" time="2.207">
   </testcase>
  </testsuite>
 </testsuites>

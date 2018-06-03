@@ -15,7 +15,10 @@ var Ajax = function(){
         return ajax("getTrainingType");
     }
     this.getTrainee = function(){
-        return ajax("getTrainee")
+        return ajax("getTrainee");
+    }
+    this.getAssessment = function(){
+        return ajax("getAssessment");
     }
     
     function ajax(r){

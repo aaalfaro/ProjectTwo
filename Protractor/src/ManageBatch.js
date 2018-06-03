@@ -14,7 +14,15 @@ let Manage = function(){
     this.insertType = function(){
         return element(by.css("#trainingType"));
     }
-    
+    this.assessBatch = function(){
+        element(by.css("body > div > ui-view > nav > div > ul.nav.navbar-nav.navbar-right > li:nth-child(3) > a")).click();
+    }
+    this.reports = function(){
+        element(by.css("body > div > ui-view > nav > div > ul.nav.navbar-nav.navbar-right > li:nth-child(4) > a")).click();
+    }
+    this.managePage = function(){
+        return element(by.css("body > div > ui-view > nav > div > ul.nav.navbar-nav.navbar-right > li:nth-child(2) > a")).click();
+    }
     this.insertSkillType = function(){
         return element(by.id("skillType"));
     }
@@ -118,6 +126,7 @@ let Manage = function(){
     this.deleteBatch = function(){
         element(by.css("#deleteBatchModal > div > div > div.modal-footer > input")).click();
     }
+
 
 }
 module.exports = new Manage();

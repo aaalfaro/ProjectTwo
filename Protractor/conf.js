@@ -2,7 +2,11 @@ exports.config = {
     //This is the default address for the WebDriver-Manager
     seleniumAddress: "http://localhost:4444/wd/hub",
     //specs takes an array of where your tests are located
-    specs: ['./spec/home.spec.js','./spec/manage.spec.js'],
+    specs: ['./spec/home.spec.js','./spec/manage.spec.js','./spec/assess.spec.js','./spec/report.spec.js'],
+
+    capabilities: {
+        browserName: 'chrome'
+    },
 
     framework: 'jasmine2',
     onPrepare: function() {

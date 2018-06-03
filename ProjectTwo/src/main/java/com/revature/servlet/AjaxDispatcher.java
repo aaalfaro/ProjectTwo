@@ -1,4 +1,4 @@
-package com.revature.servlet;
+package com.revature.servlets;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +34,8 @@ public class AjaxDispatcher {
 				return AssessmentService.getCategories();
 			case "/ProjectTwo/getAssessmentTypes.ajax":
 				return AssessmentService.getTypes();
+			case "/ProjectTwo/getAssessment.ajax":
+				return AssessmentService.getAssessment(181);
 		}return null;
 		
 	}

@@ -8,7 +8,7 @@ browser.driver.controlFlow().execute = function() {
 
   // queue 100ms wait
   origFn.call(browser.driver.controlFlow(), function() {
-    return protractor.promise.delayed(20);
+    return protractor.promise.delayed(50);
   });
 
   return origFn.apply(browser.driver.controlFlow(), args);
@@ -18,6 +18,7 @@ browser.driver.controlFlow().execute = function() {
 describe("Testing manage page", ()=>{
     let manage = require("../src/ManageBatch.js");
     var ajax = require("../Ajax.js");
+    
 
     var trainers = ajax.getTrainers();
     var batch  = ajax.getBatch();
@@ -36,6 +37,17 @@ describe("Testing manage page", ()=>{
             expect(manage.getPageTitle()).toBe("Caliber | Performance Management");
         })
     })
+    describe('user clicks through links to other pages',()=>{
+        it("user clicks on assess batch",()=>{
+            manage.assessBatch();  
+        })
+        it("user clicks on report",()=>{
+            manage.reports();
+        })
+        it("user clicks back to manage page",()=>{
+            manage.managePage();
+        })
+    })
     describe("Testing dropdown for year",()=>{
         it("should cycle through all options in the dropdown",()=>{
             dropdown = manage.getYearDropdown();
@@ -46,6 +58,7 @@ describe("Testing manage page", ()=>{
             })
         })
     })
+
     describe("Creating a new batch",()=>{
         it("user clicks on the create batch button",()=>{
             newBatch = manage.createNewBatchButton().click();
@@ -95,9 +108,6 @@ describe("Testing manage page", ()=>{
         })
         it("user selects a trainer",()=>{
             let select = manage.insertTrainer();
-            // for(let trainer of trainers){
-            //     select.element(by.css('option[value="'+trainer.name+'"]')).click();
-            // }
             select.all(by.tagName('option')).then(function(elements){
                 for(let option of elements){
                     option.click();
@@ -120,13 +130,11 @@ describe("Testing manage page", ()=>{
         it("user selects a start date",()=>{
             let select = manage.insertStartDate();
             select.sendKeys(batch[1].startDate);
-            // expect(select.getAttribute('value')).toBeCloseTo(batch[0].startDate);
         })
 
         it("user selects an end date",()=>{
             let select = manage.insertEndDate();
             select.sendKeys(batch[1].endDate);
-            // expect(select.getAttribute('value')).toBe(batch[0].endDate);
         })
 
         it("user selects a good grade",()=>{
@@ -278,7 +286,7 @@ describe("Testing manage page", ()=>{
            })
         })
     })
-    describe("assess batch link",()=>{
+    describe("assess link",()=>{
         it("user clicks on assess batch",()=>{
             manage.assessBatch();
         })
