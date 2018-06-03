@@ -9,13 +9,16 @@ import {Observable} from 'rxjs/Observable';
 })
 export class TestNgComponent implements OnInit {
 
+  result: Object;
+
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
+    this.getResults().subscribe(data=>this.result=data, err => console.log(err.error));
   }
 
-  getResults(): Observable<String>{
-    return this.http.get<String>("http://ec2-54-161-125-174.compute-1.amazonaws.com:8090/ProjectTwo/TestNG");
-  }
+  getResults(): Observable<string>{
+    return this.http.get<string>("http://localhost:8080/ProjectTwo/TestNG");
 
+  }
 }

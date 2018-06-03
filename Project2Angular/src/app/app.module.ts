@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppRoutes } from '../shared/app-routes';
+import {HttpClientModule} from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
@@ -19,7 +20,8 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(AppRoutes)
+    RouterModule.forRoot(AppRoutes),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

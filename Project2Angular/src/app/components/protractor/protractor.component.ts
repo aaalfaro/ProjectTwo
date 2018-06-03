@@ -14,6 +14,7 @@ export class ProtractorComponent implements OnInit {
   ngOnInit() {
   }
   getResults(): Observable<String>{
-    return this.http.get<String>("http://ec2-54-161-125-174.compute-1.amazonaws.com:8090/ProjectTwo/Protractor");
+    return this.http.get<String>("http://localhost:8080/ProjectTwo/Protractor");
+
   }
 }
