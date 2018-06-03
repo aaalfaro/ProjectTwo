@@ -21,10 +21,12 @@ import { HomeComponent } from './components/home/home.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(AppRoutes),
-    HttpClientModule
+    RouterModule.forRoot(AppRoutes, {onSameUrlNavigation: 'reload'}),
+    HttpClientModule,
+    
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
-  bootstrap: [AppComponent]
+  bootstrap: [HomeComponent],
+  exports:[RouterModule]
 })
 export class AppModule { }
