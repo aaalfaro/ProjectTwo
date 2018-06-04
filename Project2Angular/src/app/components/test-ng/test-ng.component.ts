@@ -18,7 +18,7 @@ export class TestNgComponent implements OnInit {
   }
 
   getResults(): Observable<string>{
-    return this.http.get<string>("http://localhost:8080/ProjectTwo/TestNG");
+    return this.http.get<string>("http://ec2-54-161-125-174.compute-1.amazonaws.com:8090/ProjectTwo/TestNGTest");
 
   }
 }

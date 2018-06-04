@@ -1,7 +1,16 @@
-<a href="./"><button type="button" class="btn btn-success">Home</button></a>
+<a [routerLink]="['/']"><button type="button" class="btn btn-success">Home</button></a>
 <br><br>
 <h2>TestNG Results</h2>
 
-Total tests: {{result["testng-results"].total}}<br>
+Total tests: {{result['testng-results'].total}}<br>
+Passed: {{result['testng-results'].passed}}
+Failed: {{result['testng-results'].failed}}
+<p>Tests completed at: {{result['testng-results'].suite['finished-at']}}</p>
 
-<p>Tests completed at: {{result["testng-results"].suite["finished-at"]}}</p>
+<div *ngFor="let method of result['testng-results'].suite.test.class['test-method']">
+    <p>
+    <div *ngIf="method.params"><h4>{{method.params.param.value}}</h4> Result: {{method.status}}</div>
+    <div *ngIf="method.exception">
+        Failure message: <div style="color:red;">{{method.exception.message}}</div>
+    </div>
+</div>

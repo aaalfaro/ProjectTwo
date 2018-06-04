@@ -181,7 +181,7 @@ module.exports = ""
 /***/ "./src/app/components/protractor/protractor.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <a href=\"./\">\n        <button type=\"button\" class=\"btn btn-success\">Home</button>\n    </a>\n    <br>\n    <br>\n    <h2>Protractor Results</h2>\n    <div *ngFor=\"let suite of result.testsuites.testsuite\">\n            <br>\n        <h5>{{suite.name}}</h5> <strong>Tests: {{suite.tests}}, Failures: {{suite.failures}}</strong>\n        Time completed (UTC): {{suite.timestamp}}\n        <div *ngIf=\"suite.testcase\">\n            <div *ngIf=\"suite.testcase.name\">\n                {{suite.testcase.name}}\n                <div *ngIf=\"suite.testcase.failure\" style=\"color:red;\">\n                    {{suite.testcase.failure.message}}\n                </div>\n            </div>\n            <div *ngIf=\"suite.testcase.length>1\">\n                <div *ngFor=\"let case of suite.testcase\">\n                    {{case.name}}\n                </div>\n\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container\">\n    <a [routerLink]=\"['/']\">\n        <button type=\"button\" class=\"btn btn-success\">Home</button>\n    </a>\n    <br>\n    <br>\n    <h2>Protractor Results</h2>\n    <div *ngFor=\"let suite of result.testsuites.testsuite\">\n            <br>\n        <h5>{{suite.name}}</h5> <strong>Tests: {{suite.tests}}, Failures: {{suite.failures}}</strong>\n        Time completed (UTC): {{suite.timestamp}}\n        <div *ngIf=\"suite.testcase\">\n            <div *ngIf=\"suite.testcase.name\">\n                {{suite.testcase.name}}\n                <div *ngIf=\"suite.testcase.failure\" style=\"color:red;\">\n                    {{suite.testcase.failure.message}}\n                </div>\n            </div>\n            <div *ngIf=\"suite.testcase.length>1\">\n                <div *ngFor=\"let case of suite.testcase\">\n                    {{case.name}}\n                </div>\n\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -239,7 +239,7 @@ module.exports = ""
 /***/ "./src/app/components/test-ng/test-ng.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<a href=\"./\"><button type=\"button\" class=\"btn btn-success\">Home</button></a>\n<br><br>\n<h2>TestNG Results</h2>\n\nTotal tests: {{result[\"testng-results\"].total}}<br>\n\n<p>Tests completed at: {{result[\"testng-results\"].suite[\"finished-at\"]}}</p>"
+module.exports = "<a [routerLink]=\"['/']\"><button type=\"button\" class=\"btn btn-success\">Home</button></a>\n<br><br>\n<h2>TestNG Results</h2>\n\nTotal tests: {{result['testng-results'].total}}<br>\nPassed: {{result['testng-results'].passed}}\nFailed: {{result['testng-results'].failed}}\n<p>Tests completed at: {{result['testng-results'].suite['finished-at']}}</p>\n\n<div *ngFor=\"let method of result['testng-results'].suite.test.class['test-method']\">\n    <p>\n    <div *ngIf=\"method.params\"><h4>{{method.params.param.value}}</h4> Result: {{method.status}}</div>\n    <div *ngIf=\"method.exception\">\n        Failure message: <div style=\"color:red;\">{{method.exception.message}}</div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -270,7 +270,7 @@ var TestNgComponent = /** @class */ (function () {
         this.getResults().subscribe(function (data) { return _this.result = data; }, function (err) { return console.log(err.error); });
     };
     TestNgComponent.prototype.getResults = function () {
-        return this.http.get("http://localhost:8080/ProjectTwo/TestNG");
+        return this.http.get("http://ec2-54-161-125-174.compute-1.amazonaws.com:8090/ProjectTwo/TestNGTest");
     };
     TestNgComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
