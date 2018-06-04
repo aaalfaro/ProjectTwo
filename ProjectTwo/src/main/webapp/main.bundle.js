@@ -110,7 +110,7 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["b" /* HttpClientModule */],
             ],
             providers: [{ provide: __WEBPACK_IMPORTED_MODULE_5__angular_common__["g" /* LocationStrategy */], useClass: __WEBPACK_IMPORTED_MODULE_5__angular_common__["d" /* HashLocationStrategy */] }],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_9__components_home_home_component__["a" /* HomeComponent */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]],
             exports: [__WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* RouterModule */]]
         })
     ], AppModule);

@@ -26,7 +26,7 @@ import { HomeComponent } from './components/home/home.component';
     
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
-  bootstrap: [HomeComponent],
+  bootstrap: [AppComponent],
   exports:[RouterModule]
 })
 export class AppModule { }
