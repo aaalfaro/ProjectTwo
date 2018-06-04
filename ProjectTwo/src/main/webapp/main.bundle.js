@@ -131,7 +131,7 @@ module.exports = ""
 /***/ "./src/app/components/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Select a testing method:</h3>\n<a routerLink=\"/TestNG\"><button type=\"button\" class=\"btn btn-primary\">TestNG</button></a>\n<a routerLink=\"/Protractor\"><button type=\"button\" class=\"btn btn-warning\">Protractor</button></a>"
+module.exports = "<h3>Select a testing method:</h3>\n<a [routerLink]=\"['/TestNG']\"><button type=\"button\" class=\"btn btn-primary\">TestNG</button></a>\n<a [routerLink]=\"['/Protractor']\"><button type=\"button\" class=\"btn btn-warning\">Protractor</button></a>"
 
 /***/ }),
 
